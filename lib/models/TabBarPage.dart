@@ -4,29 +4,30 @@ import 'package:flutter/material.dart';
 class TabBarPage extends StatefulWidget {
   // ignore: non_constant_identifier_names
   final _Tabs;
+
   // ignore: non_constant_identifier_names
   final _Pages;
   final String _title;
   final Color _color;
 
-  TabBarPage(this._Tabs,this._Pages, this._title,this._color);
-
+  TabBarPage(this._Tabs, this._Pages, this._title, this._color);
 
   @override
-  TabBarPageState createState() => TabBarPageState(_Tabs,_Pages,_title,_color);
+  TabBarPageState createState() =>
+      TabBarPageState(_Tabs, _Pages, _title, _color);
 }
 
 class TabBarPageState extends State<TabBarPage> {
   // ignore: non_constant_identifier_names
   final _Tabs;
+
   // ignore: non_constant_identifier_names
   final _Pages;
   String _title;
   Color _color;
 
-  TabBarPageState(this._Tabs,this._Pages, String providedTitle,
-      Color providedColor) {
-
+  TabBarPageState(
+      this._Tabs, this._Pages, String providedTitle, Color providedColor) {
     this._title = providedTitle;
     this._color = providedColor;
   }
@@ -39,7 +40,17 @@ class TabBarPageState extends State<TabBarPage> {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: _color,
-            title: Text(_title),
+            title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(_title),
+                  RaisedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/newPage');
+                    },
+                    child: Text('TEST'),
+                  ),
+                ]),
             bottom: TabBar(
               isScrollable: true,
               indicatorColor: Colors.white,
