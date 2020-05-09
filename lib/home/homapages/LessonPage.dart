@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kidsapp/models/TabBarPage.dart';
 
 class LessonPage extends StatefulWidget {
   @override
@@ -7,35 +8,20 @@ class LessonPage extends StatefulWidget {
 }
 
 class LessonPageState extends State<LessonPage> {
-  final _dGameTabs = <Tab>[
+  String _title = 'Lessons';
+  Color color = Colors.deepPurpleAccent;
+
+  final _lessonTabs = <Tab>[
     Tab(text: 'Numbers'),
     Tab(text: 'Letters'),
     Tab(text: 'Figures'),
   ];
 
-  final _dGamePages = [NumbersList(), LettersList(), FiguresList()];
+  final _lessonPages = [NumbersList(), LettersList(), FiguresList()];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: DefaultTabController(
-        length: _dGameTabs.length,
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.deepPurpleAccent,
-            title: Text('Lessons'),
-            bottom: TabBar(
-              isScrollable: true,
-              indicatorColor: Colors.white,
-              tabs: _dGameTabs,
-            ),
-          ),
-          body: TabBarView(
-            children: _dGamePages,
-          ),
-        ),
-      ),
-    );
+    return TabBarPage(_lessonTabs, _lessonPages, _title, color);
   }
 }
 

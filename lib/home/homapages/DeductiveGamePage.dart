@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kidsapp/models/TabBarPage.dart';
 
 class DeductiveGamePage extends StatefulWidget {
   @override
@@ -7,60 +8,98 @@ class DeductiveGamePage extends StatefulWidget {
 }
 
 class DeductiveGamePageState extends State<DeductiveGamePage> {
+  final String _title = 'D Games';
+  final Color _color = Colors.lightBlue;
   final _dGameTabs = <Tab>[
     Tab(text: 'Memory'),
     Tab(text: 'Logic'),
     Tab(text: 'Consideration'),
   ];
-
   final _dGamePages = [MemoryList(), LogicList(), ConsiderationList()];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: DefaultTabController(
-        length: _dGameTabs.length,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Deductive games'),
-            bottom: TabBar(
-              isScrollable: true,
-              indicatorColor: Colors.white,
-              tabs: _dGameTabs,
-            ),
-          ),
-          body: TabBarView(
-            children: _dGamePages,
-          ),
-        ),
-      ),
-    );
+    return TabBarPage(_dGameTabs, _dGamePages, _title, _color);
   }
 }
 
 class MemoryList extends StatelessWidget {
+  final _listItems = <Widget>[
+    ListTile(
+      leading: Icon(Icons.cloud),
+      title: Text('Game 1'),
+      subtitle: Text('Description for game one'),
+    ),
+    ListTile(
+      leading: Icon(Icons.panorama),
+      title: Text('Game 2'),
+      subtitle: Text('Description for game two'),
+    ),
+    ListTile(
+      leading: Icon(Icons.dashboard),
+      title: Text('Game 3'),
+      subtitle: Text('Description for game three'),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('MemoryList'),
+      child: ListView(children: _listItems),
     );
   }
 }
 
 class LogicList extends StatelessWidget {
+  final _listItems = <Widget>[
+    ListTile(
+      leading: Icon(Icons.cloud),
+      title: Text('Game 1'),
+      subtitle: Text('Description for game one'),
+    ),
+    ListTile(
+      leading: Icon(Icons.access_alarm),
+      title: Text('Game 2'),
+      subtitle: Text('Description for game two'),
+    ),
+    ListTile(
+      leading: Icon(Icons.save),
+      title: Text('Game 3'),
+      subtitle: Text('Description for game three'),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('LogicList'),
+      child: ListView(children: _listItems),
     );
   }
 }
 
 class ConsiderationList extends StatelessWidget {
+  final _listItems = <Widget>[
+    ListTile(
+      leading: Icon(Icons.language),
+      title: Text('Game 1'),
+      subtitle: Text('Description for game one'),
+    ),
+    ListTile(
+      leading: Icon(Icons.calendar_today),
+      title: Text('Game 2'),
+      subtitle: Text('Description for game two'),
+    ),
+    ListTile(
+      leading: Icon(Icons.cloud),
+      title: Text('Game 3'),
+      subtitle: Text('Description for game three'),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('ConsiderationList'),
+      child: ListView(children: _listItems),
     );
   }
 }
