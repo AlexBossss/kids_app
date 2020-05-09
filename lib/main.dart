@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kidsapp/home/HomeScreen.dart';
 
-//super app
+//super app next
 void main() {
   runApp(
     MaterialApp(
