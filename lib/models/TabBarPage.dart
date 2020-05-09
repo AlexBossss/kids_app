@@ -44,12 +44,7 @@ class TabBarPageState extends State<TabBarPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(_title),
-                  RaisedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/newPage');
-                    },
-                    child: Text('TEST'),
-                  ),
+                  //place for preferencesMenu
                 ]),
             bottom: TabBar(
               isScrollable: true,
