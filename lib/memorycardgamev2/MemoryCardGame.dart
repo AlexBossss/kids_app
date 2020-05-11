@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kidsapp/memorycardgamev2/MemoryCardEnums.dart';
 
 import 'Data.dart';
 
@@ -12,19 +13,50 @@ class MemoryGame extends StatefulWidget {
 }
 
 class _MemoryGameState extends State<MemoryGame> {
-  int itemAmount = 12;
-  int crossItemCount = 4;
   int previousIndex = -1;
   bool flip = false;
   bool start = false;
 
-  Timer timer;
-  List<String> dataImages = getImagesPath('HARD');
-  List<bool> cardFlips = getInitialItemState("HARD");
-  List<GlobalKey<FlipCardState>> cardStateKeys = getCardStateKeys("HARD");
+  static Kind kind = Kind.NUMBERS;
+  static Level level = Level.HARD;
 
+  List<String> data = getSourceArray(level, kind);
+  List<bool> cardFlips = getInitialItemState(level);
+  List<GlobalKey<FlipCardState>> cardStateKeys = getCardStateKeys(level);
 
   startGame() {}
+
+  Widget getItem(Kind kind, int index) {
+    switch (kind) {
+      case Kind.ANIMALS:
+        {
+          return Container(
+            margin: EdgeInsets.all(4.0),
+            color: Colors.white,
+            child: Image.asset(data[index]),
+          );
+        }
+        break;
+      case Kind.NUMBERS:
+        {
+          return Container(
+            margin: EdgeInsets.all(4.0),
+            color: Colors.lightBlueAccent,
+            child: Center(
+              child: Text(data[index]),
+            ),
+          );
+        }
+        break;
+    }
+  }
+
+  int getCrossAmount() {
+    if (level == Level.HARD || level == Level.MID) {
+      return 4;
+    } else
+      return 3;
+  }
 
   @override
   void initState() {
@@ -57,7 +89,7 @@ class _MemoryGameState extends State<MemoryGame> {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossItemCount,
+                    crossAxisCount: getCrossAmount(),
                   ),
                   itemBuilder: (context, index) => start
                       ? FlipCard(
@@ -69,8 +101,7 @@ class _MemoryGameState extends State<MemoryGame> {
                             } else {
                               flip = false;
                               if (previousIndex != index) {
-                                if (dataImages[previousIndex] !=
-                                    dataImages[index]) {
+                                if (data[previousIndex] != data[index]) {
                                   cardStateKeys[previousIndex]
                                       .currentState
                                       .toggleCard();
@@ -92,18 +123,9 @@ class _MemoryGameState extends State<MemoryGame> {
                             margin: EdgeInsets.all(4.0),
                             color: Colors.lightBlueAccent.withOpacity(0.3),
                           ),
-                          back: Container(
-                            margin: EdgeInsets.all(4.0),
-                            color: Colors.white,
-                            child: Image.asset(dataImages[index]),
-                          ),
-                        )
-                      : Container(
-                          margin: EdgeInsets.all(4.0),
-                          color: Colors.white,
-                          child: Image.asset(dataImages[index]),
-                        ),
-                  itemCount: dataImages.length,
+                          back: getItem(kind, index))
+                      : getItem(kind, index),
+                  itemCount: data.length,
                 ),
               ),
             ],
