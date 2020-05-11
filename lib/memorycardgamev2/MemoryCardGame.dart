@@ -16,15 +16,24 @@ class _MemoryGameState extends State<MemoryGame> {
   int previousIndex = -1;
   bool flip = false;
   bool start = false;
-
+  int time = 0;
   static Kind kind = Kind.NUMBERS;
   static Level level = Level.HARD;
+  Timer timer;
 
   List<String> data = getSourceArray(level, kind);
   List<bool> cardFlips = getInitialItemState(level);
   List<GlobalKey<FlipCardState>> cardStateKeys = getCardStateKeys(level);
 
   startGame() {}
+
+  startTimer() {
+    timer = Timer.periodic(Duration(seconds: 1), (t) {
+      setState(() {
+        time = time + 1;
+      });
+    });
+  }
 
   Widget getItem(Kind kind, int index) {
     switch (kind) {
@@ -61,7 +70,7 @@ class _MemoryGameState extends State<MemoryGame> {
   @override
   void initState() {
     super.initState();
-
+    startTimer();
     Future.delayed(const Duration(seconds: 5), () {
       setState(() {
         start = true;
