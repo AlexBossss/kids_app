@@ -139,6 +139,7 @@ class _MenuState extends State<MemoryCardGameMenu> {
                         MaterialPageRoute(
                             builder: (context) => MemoryGame(level,kind)));
                     print(kindString);
+                    print(level);
                   }),
             ],
           ),
