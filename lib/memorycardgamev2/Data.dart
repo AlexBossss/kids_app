@@ -5,7 +5,7 @@ import 'MemoryCardEnums.dart';
 
 List<String> fillSourceArray(Kind kind) {
   switch (kind) {
-    case Kind.ANIMALS:
+    case Kind.Animals:
       {
         return [
           'assets/fox.png',
@@ -27,7 +27,7 @@ List<String> fillSourceArray(Kind kind) {
         ];
       }
       break;
-    case Kind.NUMBERS:
+    case Kind.Numbers:
       {
         return [
           '1',
@@ -51,7 +51,7 @@ List<String> fillSourceArray(Kind kind) {
       break;
     default:
       {
-        return fillSourceArray(Kind.ANIMALS);
+        return fillSourceArray(Kind.Animals);
       }
   }
 }
@@ -59,15 +59,15 @@ List<String> fillSourceArray(Kind kind) {
 List getSourceArray(Level level, Kind kind) {
   List<String> levelAndKindList = new List<String>();
   List sourceArray = fillSourceArray(kind);
-  if (level == Level.HARD) {
+  if (level == Level.Hard) {
     sourceArray.forEach((element) {
       levelAndKindList.add(element);
     });
-  } else if (level == Level.MID) {
+  } else if (level == Level.Medium) {
     for (int i = 0; i < 12; i++) {
       levelAndKindList.add(sourceArray[i]);
     }
-  } else if (level == Level.EASY) {
+  } else if (level == Level.Easy) {
     for (int i = 0; i < 6; i++) {
       levelAndKindList.add(sourceArray[i]);
     }
@@ -79,15 +79,15 @@ List getSourceArray(Level level, Kind kind) {
 
 List<bool> getInitialItemState(Level level) {
   List<bool> initialItemState = new List<bool>();
-  if (level == Level.HARD) {
+  if (level == Level.Hard) {
     for (int i = 0; i < 16; i++) {
       initialItemState.add(true);
     }
-  } else if (level == Level.MID) {
+  } else if (level == Level.Medium) {
     for (int i = 0; i < 12; i++) {
       initialItemState.add(true);
     }
-  } else if (level == Level.EASY) {
+  } else if (level == Level.Easy) {
     for (int i = 0; i < 6; i++) {
       initialItemState.add(true);
     }
@@ -98,15 +98,15 @@ List<bool> getInitialItemState(Level level) {
 List<GlobalKey<FlipCardState>> getCardStateKeys(Level level) {
   List<GlobalKey<FlipCardState>> cardStateKeys =
       new List<GlobalKey<FlipCardState>>();
-  if (level == Level.HARD) {
+  if (level == Level.Hard) {
     for (int i = 0; i < 16; i++) {
       cardStateKeys.add(GlobalKey<FlipCardState>());
     }
-  } else if (level == Level.MID) {
+  } else if (level == Level.Medium) {
     for (int i = 0; i < 12; i++) {
       cardStateKeys.add(GlobalKey<FlipCardState>());
     }
-  } else if (level == Level.EASY) {
+  } else if (level == Level.Easy) {
     for (int i = 0; i < 6; i++) {
       cardStateKeys.add(GlobalKey<FlipCardState>());
     }

@@ -1,10 +1,10 @@
 enum Level {
-  HARD,
-  MID,
-  EASY
+  Hard,
+  Medium,
+  Easy
 }
 
 enum Kind {
-  ANIMALS,
-  NUMBERS
+  Animals,
+  Numbers
 }

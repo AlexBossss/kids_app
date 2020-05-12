@@ -9,20 +9,21 @@ import 'Data.dart';
 
 class MemoryGame extends StatefulWidget {
   Level level;
+  Kind kind;
 
-  MemoryGame(this.level);
+  MemoryGame(this.level,this.kind);
 
   @override
-  _MemoryGameState createState() => _MemoryGameState(level);
+  _MemoryGameState createState() => _MemoryGameState(level,kind);
 }
 
 class _MemoryGameState extends State<MemoryGame> {
-  _MemoryGameState(this.level);
+  _MemoryGameState(this.level,this.kind);
 
   int previousIndex = -1;
   bool flip = false;
   bool start = false;
-  Kind kind = Kind.ANIMALS;
+  Kind kind ;
   Level level;
 
   List<String> data;
@@ -32,7 +33,7 @@ class _MemoryGameState extends State<MemoryGame> {
 
   Widget getItem(Kind kind, int index) {
     switch (kind) {
-      case Kind.ANIMALS:
+      case Kind.Animals:
         {
           return Container(
             margin: EdgeInsets.all(4.0),
@@ -41,7 +42,7 @@ class _MemoryGameState extends State<MemoryGame> {
           );
         }
         break;
-      case Kind.NUMBERS:
+      case Kind.Numbers:
         {
           return Container(
             margin: EdgeInsets.all(4.0),
@@ -56,7 +57,7 @@ class _MemoryGameState extends State<MemoryGame> {
   }
 
   int getCrossAmount() {
-    if (level == Level.HARD || level == Level.MID) {
+    if (level == Level.Hard || level == Level.Medium) {
       return 4;
     } else
       return 3;

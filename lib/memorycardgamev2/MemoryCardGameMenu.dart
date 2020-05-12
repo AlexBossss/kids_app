@@ -14,23 +14,44 @@ class _MenuState extends State<MemoryCardGameMenu> {
   bool isMid = false;
   bool isEasy = false;
 
-  Level level;
+  Level level = Level.Hard;
+
+  String kindString = Kind.Animals.toString().split('.').last;
+
+  Kind kind;
+
+  Kind checkKind() {
+    if (kindString == 'Animals') {
+      return Kind.Animals;
+    } else {
+      return Kind.Numbers;
+    }
+  }
+
+  static const List<String> kinds = <String>['Animals', 'Numbers'];
+
+  final List<DropdownMenuItem<String>> _dropDownMenuItems = kinds
+      .map(
+        (String value) => DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        ),
+      )
+      .toList();
 
   Level checkLevel() {
     if (isHard == true) {
-      return Level.HARD;
+      return Level.Hard;
     } else if (isMid == true) {
-      return Level.MID;
+      return Level.Medium;
     } else {
-      return Level.EASY;
+      return Level.Easy;
     }
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    level = checkLevel();
   }
 
   @override
@@ -50,7 +71,7 @@ class _MenuState extends State<MemoryCardGameMenu> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Hard'),
+                  Text(Level.Hard.toString().split('.').last),
                   Switch(
                     onChanged: (bool value) {
                       setState(() => {
@@ -66,7 +87,7 @@ class _MenuState extends State<MemoryCardGameMenu> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Medium'),
+                  Text(Level.Medium.toString().split('.').last),
                   Switch(
                     onChanged: (bool value) {
                       setState(() => {
@@ -82,7 +103,7 @@ class _MenuState extends State<MemoryCardGameMenu> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Easy'),
+                  Text(Level.Easy.toString().split('.').last),
                   Switch(
                     onChanged: (bool value) {
                       setState(() => {
@@ -95,14 +116,29 @@ class _MenuState extends State<MemoryCardGameMenu> {
                   ),
                 ],
               ),
+              ListTile(
+                title: Text('Card:'),
+                trailing: DropdownButton(
+                  value: kindString,
+                  onChanged: (String newKind) {
+                    setState(() {
+                      kindString = newKind;
+                    });
+                  },
+                  items: _dropDownMenuItems,
+                ),
+              ),
               RaisedButton(
                   padding: const EdgeInsets.all(24.0),
                   child: Text('Start'),
                   onPressed: () {
                     level = checkLevel();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MemoryGame(level)));
-
+                    kind = checkKind();
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MemoryGame(level,kind)));
+                    print(kindString);
                   }),
             ],
           ),
