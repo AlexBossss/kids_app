@@ -8,32 +8,27 @@ import 'package:kidsapp/memorycardgamev2/MemoryCardEnums.dart';
 import 'Data.dart';
 
 class MemoryGame extends StatefulWidget {
+  Level level;
+
+  MemoryGame(this.level);
+
   @override
-  _MemoryGameState createState() => _MemoryGameState();
+  _MemoryGameState createState() => _MemoryGameState(level);
 }
 
 class _MemoryGameState extends State<MemoryGame> {
+  _MemoryGameState(this.level);
+
   int previousIndex = -1;
   bool flip = false;
   bool start = false;
-  int time = 0;
-  static Kind kind = Kind.NUMBERS;
-  static Level level = Level.HARD;
-  Timer timer;
+  Kind kind = Kind.ANIMALS;
+  Level level;
 
-  List<String> data = getSourceArray(level, kind);
-  List<bool> cardFlips = getInitialItemState(level);
-  List<GlobalKey<FlipCardState>> cardStateKeys = getCardStateKeys(level);
+  List<String> data;
 
-  startGame() {}
-
-  startTimer() {
-    timer = Timer.periodic(Duration(seconds: 1), (t) {
-      setState(() {
-        time = time + 1;
-      });
-    });
-  }
+  List<bool> cardFlips;
+  List<GlobalKey<FlipCardState>> cardStateKeys;
 
   Widget getItem(Kind kind, int index) {
     switch (kind) {
@@ -69,8 +64,11 @@ class _MemoryGameState extends State<MemoryGame> {
 
   @override
   void initState() {
+    data = getSourceArray(level, kind);
+    cardFlips = getInitialItemState(level);
+    cardStateKeys = getCardStateKeys(level);
+    print(level);
     super.initState();
-    startTimer();
     Future.delayed(const Duration(seconds: 5), () {
       setState(() {
         start = true;
@@ -125,6 +123,7 @@ class _MemoryGameState extends State<MemoryGame> {
                                 }
                               }
                             }
+                            setState(() {});
                           },
                           flipOnTouch: cardFlips[index],
                           direction: FlipDirection.HORIZONTAL,

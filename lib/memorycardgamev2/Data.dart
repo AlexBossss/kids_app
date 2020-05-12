@@ -22,7 +22,7 @@ List<String> fillSourceArray(Kind kind) {
           'assets/parrot.png',
           'assets/rabbit.png',
           'assets/rabbit.png',
-          'assets/zoo.png'
+          'assets/zoo.png',
           'assets/zoo.png'
         ];
       }
