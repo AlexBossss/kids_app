@@ -6,12 +6,7 @@ import 'dedgameslists/ConsiderationList.dart';
 import 'dedgameslists/LogicList.dart';
 import 'dedgameslists/MemoryList.dart';
 
-class DeductiveGamePage extends StatefulWidget {
-  @override
-  DeductiveGamePageState createState() => DeductiveGamePageState();
-}
-
-class DeductiveGamePageState extends State<DeductiveGamePage> {
+class DeductiveGamePage extends StatelessWidget {
   final String _title = 'D Games';
   final Color _color = Colors.lightBlue;
   final _dGameTabs = <Tab>[
@@ -26,5 +21,3 @@ class DeductiveGamePageState extends State<DeductiveGamePage> {
     return TabBarPage(_dGameTabs, _dGamePages, _title, _color);
   }
 }
-
-
