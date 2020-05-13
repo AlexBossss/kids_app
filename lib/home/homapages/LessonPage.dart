@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:kidsapp/models/TabBarPage.dart';
 
 class LessonPage extends StatelessWidget {
-  String _title = 'Lessons';
-  List<MaterialColor> _color = [
+  final String _title = 'Lessons';
+  final List<MaterialColor> _color = [
     Colors.red,
     Colors.purple,
     Colors.blue,
