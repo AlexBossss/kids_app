@@ -26,12 +26,10 @@ class HomeState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.games),
             title: Text('Deductive games'),
-//            backgroundColor: _tabColor[_currentIndex],
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book),
             title: Text('Lessons'),
-//            backgroundColor: _tabColor[_currentIndex],
           ),
         ],
         onTap: (index) {

@@ -1,45 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 
-class TabBarPage extends StatefulWidget {
-  // ignore: non_constant_identifier_names
-  final _Tabs;
-
-  // ignore: non_constant_identifier_names
-  final _Pages;
+class TabBarPage extends StatelessWidget {
+  final _tabs;
+  final _pages;
   final String _title;
-  final Color _color;
+  final List<MaterialColor> color;
 
-  TabBarPage(this._Tabs, this._Pages, this._title, this._color);
-
-  @override
-  TabBarPageState createState() =>
-      TabBarPageState(_Tabs, _Pages, _title, _color);
-}
-
-class TabBarPageState extends State<TabBarPage> {
-  // ignore: non_constant_identifier_names
-  final _Tabs;
-
-  // ignore: non_constant_identifier_names
-  final _Pages;
-  String _title;
-  Color _color;
-
-  TabBarPageState(
-      this._Tabs, this._Pages, String providedTitle, Color providedColor) {
-    this._title = providedTitle;
-    this._color = providedColor;
-  }
+  TabBarPage(this._tabs, this._pages, this._title, this.color);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: DefaultTabController(
-        length: _Tabs.length,
+        length: _tabs.length,
         child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: _color,
+          appBar: GradientAppBar(
+            gradient: LinearGradient(colors: color),
             title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -47,13 +25,13 @@ class TabBarPageState extends State<TabBarPage> {
                   //place for preferencesMenu
                 ]),
             bottom: TabBar(
-              isScrollable: true,
+              //isScrollable: true,
               indicatorColor: Colors.white,
-              tabs: _Tabs,
+              tabs: _tabs,
             ),
           ),
           body: TabBarView(
-            children: _Pages,
+            children: _pages,
           ),
         ),
       ),
