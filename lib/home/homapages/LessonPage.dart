@@ -2,14 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kidsapp/models/TabBarPage.dart';
 
-class LessonPage extends StatefulWidget {
-  @override
-  LessonPageState createState() => LessonPageState();
-}
-
-class LessonPageState extends State<LessonPage> {
+class LessonPage extends StatelessWidget {
   String _title = 'Lessons';
-  Color color = Colors.deepPurpleAccent;
+  List<MaterialColor> _color = [
+    Colors.red,
+    Colors.purple,
+    Colors.blue,
+  ];
 
   final _lessonTabs = <Tab>[
     Tab(text: 'Numbers'),
@@ -21,7 +20,7 @@ class LessonPageState extends State<LessonPage> {
 
   @override
   Widget build(BuildContext context) {
-    return TabBarPage(_lessonTabs, _lessonPages, _title, color);
+    return TabBarPage(_lessonTabs, _lessonPages, _title, _color);
   }
 }
 
