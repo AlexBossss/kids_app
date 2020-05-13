@@ -2,12 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kidsapp/models/TabBarPage.dart';
 
-class LessonPage extends StatefulWidget {
-  @override
-  LessonPageState createState() => LessonPageState();
-}
-
-class LessonPageState extends State<LessonPage> {
+class LessonPage extends StatelessWidget {
   String _title = 'Lessons';
   Color color = Colors.deepPurpleAccent;
 
