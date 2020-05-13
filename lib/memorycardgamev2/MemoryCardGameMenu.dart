@@ -10,18 +10,18 @@ class MemoryCardGameMenu extends StatefulWidget {
 }
 
 class _MenuState extends State<MemoryCardGameMenu> {
-  bool isHard = true;
-  bool isMid = false;
-  bool isEasy = false;
+  bool _isHard = true;
+  bool _isMid = false;
+  bool _isEasy = false;
 
-  Level level = Level.Hard;
+  Level _level = Level.Hard;
 
-  String kindString = Kind.Animals.toString().split('.').last;
+  String _kindString = Kind.Animals.toString().split('.').last;
 
-  Kind kind;
+  Kind _kind;
 
   Kind checkKind() {
-    if (kindString == 'Animals') {
+    if (_kindString == 'Animals') {
       return Kind.Animals;
     } else {
       return Kind.Numbers;
@@ -40,9 +40,9 @@ class _MenuState extends State<MemoryCardGameMenu> {
       .toList();
 
   Level checkLevel() {
-    if (isHard == true) {
+    if (_isHard == true) {
       return Level.Hard;
-    } else if (isMid == true) {
+    } else if (_isMid == true) {
       return Level.Medium;
     } else {
       return Level.Easy;
@@ -75,12 +75,12 @@ class _MenuState extends State<MemoryCardGameMenu> {
                   Switch(
                     onChanged: (bool value) {
                       setState(() => {
-                            this.isHard = value,
-                            this.isEasy = false,
-                            this.isMid = false
+                            this._isHard = value,
+                            this._isEasy = false,
+                            this._isMid = false
                           });
                     },
-                    value: this.isHard,
+                    value: this._isHard,
                   ),
                 ],
               ),
@@ -91,12 +91,12 @@ class _MenuState extends State<MemoryCardGameMenu> {
                   Switch(
                     onChanged: (bool value) {
                       setState(() => {
-                            this.isMid = value,
-                            this.isHard = false,
-                            this.isEasy = false
+                            this._isMid = value,
+                            this._isHard = false,
+                            this._isEasy = false
                           });
                     },
-                    value: this.isMid,
+                    value: this._isMid,
                   ),
                 ],
               ),
@@ -107,22 +107,22 @@ class _MenuState extends State<MemoryCardGameMenu> {
                   Switch(
                     onChanged: (bool value) {
                       setState(() => {
-                            this.isEasy = value,
-                            this.isHard = false,
-                            this.isMid = false
+                            this._isEasy = value,
+                            this._isHard = false,
+                            this._isMid = false
                           });
                     },
-                    value: this.isEasy,
+                    value: this._isEasy,
                   ),
                 ],
               ),
               ListTile(
                 title: Text('Card:'),
                 trailing: DropdownButton(
-                  value: kindString,
+                  value: _kindString,
                   onChanged: (String newKind) {
                     setState(() {
-                      kindString = newKind;
+                      _kindString = newKind;
                     });
                   },
                   items: _dropDownMenuItems,
@@ -132,14 +132,14 @@ class _MenuState extends State<MemoryCardGameMenu> {
                   padding: const EdgeInsets.all(24.0),
                   child: Text('Start'),
                   onPressed: () {
-                    level = checkLevel();
-                    kind = checkKind();
+                    _level = checkLevel();
+                    _kind = checkKind();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => MemoryGame(level,kind)));
-                    print(kindString);
-                    print(level);
+                            builder: (context) => MemoryGame(_level,_kind)));
+                    print(_kindString);
+                    print(_level);
                   }),
             ],
           ),

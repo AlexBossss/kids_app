@@ -8,30 +8,30 @@ import 'package:kidsapp/memorycardgamev2/MemoryCardEnums.dart';
 import 'Data.dart';
 
 class MemoryGame extends StatefulWidget {
-  Level level;
-  Kind kind;
+  final Level _level;
+  final Kind _kind;
 
-  MemoryGame(this.level, this.kind);
+  MemoryGame(this._level, this._kind);
 
   @override
-  _MemoryGameState createState() => _MemoryGameState(level, kind);
+  _MemoryGameState createState() => _MemoryGameState(_level, _kind);
 }
 
 class _MemoryGameState extends State<MemoryGame> {
-  _MemoryGameState(this.level, this.kind);
+  _MemoryGameState(this._level, this._kind);
 
-  int previousIndex = -1;
-  bool flip = false;
-  bool start = false;
-  Kind kind;
+  int _previousIndex = -1;
+  bool _flip = false;
+  bool _start = false;
+  Kind _kind;
 
-  Level level;
+  Level _level;
 
-  bool isFinished;
-  List<String> data;
+  bool _isFinished;
+  List<String> _data;
 
-  List<bool> cardFlips;
-  List<GlobalKey<FlipCardState>> cardStateKeys;
+  List<bool> _cardFlips;
+  List<GlobalKey<FlipCardState>> _cardStateKeys;
 
   Widget getItem(Kind kind, int index) {
     switch (kind) {
@@ -40,7 +40,7 @@ class _MemoryGameState extends State<MemoryGame> {
           return Container(
             margin: EdgeInsets.all(4.0),
             color: Colors.white,
-            child: Image.asset(data[index]),
+            child: Image.asset(_data[index]),
           );
         }
         break;
@@ -50,7 +50,7 @@ class _MemoryGameState extends State<MemoryGame> {
             margin: EdgeInsets.all(4.0),
             color: Colors.lightBlueAccent,
             child: Center(
-              child: Text(data[index]),
+              child: Text(_data[index]),
             ),
           );
         }
@@ -59,21 +59,21 @@ class _MemoryGameState extends State<MemoryGame> {
   }
 
   int getCrossAmount() {
-    if (level == Level.Hard || level == Level.Medium) {
+    if (_level == Level.Hard || _level == Level.Medium) {
       return 4;
     } else
       return 3;
   }
 
   void restart() {
-    data = getSourceArray(level, kind);
-    cardFlips = getInitialItemState(level);
-    cardStateKeys = getCardStateKeys(level);
+    _data = getSourceArray(_level, _kind);
+    _cardFlips = getInitialItemState(_level);
+    _cardStateKeys = getCardStateKeys(_level);
 
-    isFinished = false;
+    _isFinished = false;
     Future.delayed(const Duration(seconds: 5), () {
       setState(() {
-        start = true;
+        _start = true;
       });
     });
   }
@@ -86,7 +86,7 @@ class _MemoryGameState extends State<MemoryGame> {
 
   @override
   Widget build(BuildContext context) {
-    return isFinished
+    return _isFinished
         ? Scaffold(
             body: Container(
               child: Column(
@@ -138,33 +138,34 @@ class _MemoryGameState extends State<MemoryGame> {
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: getCrossAmount(),
                         ),
-                        itemBuilder: (context, index) => start
+                        itemBuilder: (context, index) => _start
                             ? FlipCard(
-                                key: cardStateKeys[index],
+                                key: _cardStateKeys[index],
                                 onFlip: () {
-                                  if (!flip) {
-                                    flip = true;
-                                    previousIndex = index;
+                                  if (!_flip) {
+                                    _flip = true;
+                                    _previousIndex = index;
                                   } else {
-                                    flip = false;
-                                    if (previousIndex != index) {
-                                      if (data[previousIndex] != data[index]) {
-                                        cardStateKeys[previousIndex]
+                                    _flip = false;
+                                    if (_previousIndex != index) {
+                                      if (_data[_previousIndex] !=
+                                          _data[index]) {
+                                        _cardStateKeys[_previousIndex]
                                             .currentState
                                             .toggleCard();
-                                        previousIndex = index;
+                                        _previousIndex = index;
                                       } else {
-                                        cardFlips[previousIndex] = false;
-                                        cardFlips[index] = false;
-                                        print(cardFlips);
-                                        if (cardFlips
+                                        _cardFlips[_previousIndex] = false;
+                                        _cardFlips[index] = false;
+                                        print(_cardFlips);
+                                        if (_cardFlips
                                             .every((t) => t == false)) {
                                           print("Won");
                                           Future.delayed(
-                                              const Duration(seconds: 2), () {
+                                              const Duration(seconds: 1), () {
                                             setState(() {
-                                              isFinished = true;
-                                              start = false;
+                                              _isFinished = true;
+                                              _start = false;
                                             });
                                           });
                                         }
@@ -173,16 +174,16 @@ class _MemoryGameState extends State<MemoryGame> {
                                   }
                                   setState(() {});
                                 },
-                                flipOnTouch: cardFlips[index],
+                                flipOnTouch: _cardFlips[index],
                                 direction: FlipDirection.HORIZONTAL,
                                 front: Container(
                                   margin: EdgeInsets.all(4.0),
                                   color:
                                       Colors.lightBlueAccent.withOpacity(0.3),
                                 ),
-                                back: getItem(kind, index))
-                            : getItem(kind, index),
-                        itemCount: data.length,
+                                back: getItem(_kind, index))
+                            : getItem(_kind, index),
+                        itemCount: _data.length,
                       ),
                     ),
                   ],
