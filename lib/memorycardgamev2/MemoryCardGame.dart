@@ -150,10 +150,14 @@ class _MemoryGameState extends State<MemoryGame> {
                                     if (_previousIndex != index) {
                                       if (_data[_previousIndex] !=
                                           _data[index]) {
-                                        _cardStateKeys[_previousIndex]
-                                            .currentState
-                                            .toggleCard();
-                                        _previousIndex = index;
+                                        Future.delayed(
+                                            const Duration(seconds: 1), () {
+                                          _cardStateKeys[_previousIndex]
+                                              .currentState
+                                              .toggleCard();
+                                          _cardStateKeys[index].currentState.toggleCard();
+                                          _previousIndex = index;
+                                        });
                                       } else {
                                         _cardFlips[_previousIndex] = false;
                                         _cardFlips[index] = false;
