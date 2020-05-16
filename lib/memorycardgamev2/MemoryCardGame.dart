@@ -25,6 +25,7 @@ class _MemoryGameState extends State<MemoryGame> {
   bool _start = false;
   Kind _kind;
 
+  bool _wait = false;
   Level _level;
 
   bool _isFinished;
@@ -142,43 +143,50 @@ class _MemoryGameState extends State<MemoryGame> {
                             ? FlipCard(
                                 key: _cardStateKeys[index],
                                 onFlip: () {
-                                  if (!_flip) {
-                                    _flip = true;
-                                    _previousIndex = index;
-                                  } else {
-                                    _flip = false;
-                                    if (_previousIndex != index) {
-                                      if (_data[_previousIndex] !=
-                                          _data[index]) {
-                                        Future.delayed(
-                                            const Duration(seconds: 1), () {
-                                          _cardStateKeys[_previousIndex]
-                                              .currentState
-                                              .toggleCard();
-                                          _cardStateKeys[index].currentState.toggleCard();
-                                          _previousIndex = index;
-                                        });
-                                      } else {
-                                        _cardFlips[_previousIndex] = false;
-                                        _cardFlips[index] = false;
-                                        print(_cardFlips);
-                                        if (_cardFlips
-                                            .every((t) => t == false)) {
-                                          print("Won");
+                                  if(!_wait) {
+                                    if (!_flip) {
+                                      _flip = true;
+                                      _previousIndex = index;
+                                    } else {
+                                      _flip = false;
+                                      if (_previousIndex != index) {
+                                        if (_data[_previousIndex] !=
+                                            _data[index]) {
+                                          _wait = true;
                                           Future.delayed(
-                                              const Duration(seconds: 1), () {
-                                            setState(() {
-                                              _isFinished = true;
-                                              _start = false;
-                                            });
+                                              const Duration(
+                                                  milliseconds: 1200), () {
+                                            _cardStateKeys[_previousIndex]
+                                                .currentState
+                                                .toggleCard();
+                                            _cardStateKeys[index]
+                                                .currentState
+                                                .toggleCard();
+                                            _previousIndex = index;
+                                            _wait=false;
                                           });
+                                        } else {
+                                          _cardFlips[_previousIndex] = false;
+                                          _cardFlips[index] = false;
+                                          print(_cardFlips);
+                                          if (_cardFlips
+                                              .every((t) => t == false)) {
+                                            print("Won");
+                                            Future.delayed(
+                                                const Duration(seconds: 1), () {
+                                              setState(() {
+                                                _isFinished = true;
+                                                _start = false;
+                                              });
+                                            });
+                                          }
                                         }
                                       }
                                     }
                                   }
                                   setState(() {});
                                 },
-                                flipOnTouch: _cardFlips[index],
+                                flipOnTouch: _wait? false: _cardFlips[index],
                                 direction: FlipDirection.HORIZONTAL,
                                 front: Container(
                                   margin: EdgeInsets.all(4.0),
