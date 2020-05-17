@@ -84,7 +84,7 @@ class _MemoryGameState extends State<MemoryGame> {
     _cardFlips = getInitialItemState(_level);
     _cardStateKeys = getCardStateKeys(_level);
     _time = 5;
-    _left = (_data.length~/2);
+    _left = (_data.length ~/ 2);
 
     _isFinished = false;
     Future.delayed(const Duration(seconds: 5), () {
@@ -177,13 +177,15 @@ class _MemoryGameState extends State<MemoryGame> {
                                         Future.delayed(
                                             const Duration(milliseconds: 1500),
                                             () {
+                                          _audioController.play(
+                                              'memorygame/sounds/fail.mp3');
                                           _cardStateKeys[_previousIndex]
                                               .currentState
                                               .toggleCard();
-                                          _cardStateKeys[index]
+                                          _previousIndex = index;
+                                          _cardStateKeys[_previousIndex]
                                               .currentState
                                               .toggleCard();
-                                          _previousIndex = index;
 
                                           Future.delayed(
                                               const Duration(
@@ -200,7 +202,7 @@ class _MemoryGameState extends State<MemoryGame> {
                                         _audioController.play(
                                             'memorygame/sounds/success.mp3');
                                         setState(() {
-                                          _left-=1;
+                                          _left -= 1;
                                         });
                                         if (_cardFlips
                                             .every((t) => t == false)) {
