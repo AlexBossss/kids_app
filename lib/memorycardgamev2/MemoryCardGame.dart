@@ -61,7 +61,10 @@ class _MemoryGameState extends State<MemoryGame> {
           );
         }
         break;
+      default:
+        return null;
     }
+
   }
 
   startTimer() {
