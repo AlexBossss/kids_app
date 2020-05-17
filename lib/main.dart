@@ -6,10 +6,16 @@ import 'package:kidsapp/memorycardgamev2/MemoryCardGameMenu.dart';
 void main() {
   runApp(
     MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Roboto',
+        brightness: Brightness.light,
+        primaryColor: Colors.white,
+        // accentColor: Colors.greenAccent,
+      ),
       initialRoute: '/',
       routes: {
         '/': (BuildContext context) => HomeScreen(),
-        '/newPage' : (BuildContext context) => MemoryCardGameMenu(),
+        '/newPage': (BuildContext context) => MemoryCardGameMenu(),
       },
     ),
   );
