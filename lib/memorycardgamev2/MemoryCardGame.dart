@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,9 @@ class MemoryGame extends StatefulWidget {
 
 class _MemoryGameState extends State<MemoryGame> {
   _MemoryGameState(this._level, this._kind);
+
+
+  AudioCache _audioController = AudioCache();
 
   int _previousIndex = -1;
   bool _flip = false;
@@ -153,7 +157,7 @@ class _MemoryGameState extends State<MemoryGame> {
                                           _data[index]) {
                                         _wait = true;
                                         Future.delayed(
-                                            const Duration(milliseconds: 1200),
+                                            const Duration(milliseconds: 1500),
                                             () {
                                           _cardStateKeys[_previousIndex]
                                               .currentState
@@ -162,12 +166,20 @@ class _MemoryGameState extends State<MemoryGame> {
                                               .currentState
                                               .toggleCard();
                                           _previousIndex = index;
-                                          _wait = false;
+                                          _audioController.play('memorygame/sounds/fail.mp3');
+
+                                          Future.delayed(const Duration(milliseconds: 1600), (){
+                                            setState(() {
+                                              _wait = false;
+                                            });
+                                          });
+
                                         });
                                       } else {
                                         _cardFlips[_previousIndex] = false;
                                         _cardFlips[index] = false;
                                         print(_cardFlips);
+                                        _audioController.play('memorygame/sounds/success.mp3');
                                         if (_cardFlips
                                             .every((t) => t == false)) {
                                           print("Won");

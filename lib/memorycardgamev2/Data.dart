@@ -8,22 +8,22 @@ List<String> fillSourceArray(Kind kind) {
     case Kind.Animals:
       {
         return [
-          'assets/fox.png',
-          'assets/fox.png',
-          'assets/hippo.png',
-          'assets/hippo.png',
-          'assets/horse.png',
-          'assets/horse.png',
-          'assets/monkey.png',
-          'assets/monkey.png',
-          'assets/panda.png',
-          'assets/panda.png',
-          'assets/parrot.png',
-          'assets/parrot.png',
-          'assets/rabbit.png',
-          'assets/rabbit.png',
-          'assets/zoo.png',
-          'assets/zoo.png'
+          'assets/memorygame/img/fox.png',
+          'assets/memorygame/img/fox.png',
+          'assets/memorygame/img/hippo.png',
+          'assets/memorygame/img/hippo.png',
+          'assets/memorygame/img/horse.png',
+          'assets/memorygame/img/horse.png',
+          'assets/memorygame/img/monkey.png',
+          'assets/memorygame/img/monkey.png',
+          'assets/memorygame/img/panda.png',
+          'assets/memorygame/img/panda.png',
+          'assets/memorygame/img/parrot.png',
+          'assets/memorygame/img/parrot.png',
+          'assets/memorygame/img/rabbit.png',
+          'assets/memorygame/img/rabbit.png',
+          'assets/memorygame/img/zoo.png',
+          'assets/memorygame/img/zoo.png'
         ];
       }
       break;
