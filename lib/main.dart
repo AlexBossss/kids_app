@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kidsapp/home/HomeScreen.dart';
-import 'package:kidsapp/memorycardgamev2/MemoryCardGameMenu.dart';
+import 'games/memorycardgame/MemoryCardGameMenu.dart';
 
 //super app next 1
 void main() {

@@ -67,7 +67,7 @@ class _MenuState extends State<MemoryCardGameMenu> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  'Text',
+                  'Memory',
                   style: Theme.of(context).textTheme.headline3,
                 ),
               ),

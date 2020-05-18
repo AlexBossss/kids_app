@@ -8,22 +8,22 @@ List<String> fillSourceArray(Kind kind) {
     case Kind.Animals:
       {
         return [
-          'assets/memorygame/img/fox.png',
-          'assets/memorygame/img/fox.png',
-          'assets/memorygame/img/hippo.png',
-          'assets/memorygame/img/hippo.png',
-          'assets/memorygame/img/horse.png',
-          'assets/memorygame/img/horse.png',
-          'assets/memorygame/img/monkey.png',
-          'assets/memorygame/img/monkey.png',
-          'assets/memorygame/img/panda.png',
-          'assets/memorygame/img/panda.png',
-          'assets/memorygame/img/parrot.png',
-          'assets/memorygame/img/parrot.png',
-          'assets/memorygame/img/rabbit.png',
-          'assets/memorygame/img/rabbit.png',
-          'assets/memorygame/img/zoo.png',
-          'assets/memorygame/img/zoo.png'
+          'assets/animalspics/fox.png',
+          'assets/animalspics/fox.png',
+          'assets/animalspics/hippo.png',
+          'assets/animalspics/hippo.png',
+          'assets/animalspics/horse.png',
+          'assets/animalspics/horse.png',
+          'assets/animalspics/monkey.png',
+          'assets/animalspics/monkey.png',
+          'assets/animalspics/panda.png',
+          'assets/animalspics/panda.png',
+          'assets/animalspics/parrot.png',
+          'assets/animalspics/parrot.png',
+          'assets/animalspics/rabbit.png',
+          'assets/animalspics/rabbit.png',
+          'assets/animalspics/zoo.png',
+          'assets/animalspics/zoo.png'
         ];
       }
       break;

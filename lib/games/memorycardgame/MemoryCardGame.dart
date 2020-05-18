@@ -4,9 +4,9 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kidsapp/memorycardgamev2/MemoryCardEnums.dart';
 
 import 'Data.dart';
+import 'MemoryCardEnums.dart';
 
 class MemoryGame extends StatefulWidget {
   final Level _level;
