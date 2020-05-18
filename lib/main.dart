@@ -9,7 +9,7 @@ void main() {
       initialRoute: '/',
       routes: {
         '/': (BuildContext context) => HomeScreen(),
-        '/newPage' : (BuildContext context) => MemoryCardGameMenu(),
+        '/memoryCardGame' : (BuildContext context) => MemoryCardGameMenu(),
       },
     ),
   );

@@ -10,7 +10,7 @@ class MemoryList extends StatelessWidget {
       child: Column(children: [
         RaisedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/newPage');
+            Navigator.pushNamed(context, '/memoryCardGame');
           },
           child:  ListTile(
             leading: Icon(Icons.language),
