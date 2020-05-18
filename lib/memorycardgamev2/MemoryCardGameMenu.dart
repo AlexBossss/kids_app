@@ -10,9 +10,9 @@ class MemoryCardGameMenu extends StatefulWidget {
 }
 
 class _MenuState extends State<MemoryCardGameMenu> {
-  bool _isHard = true;
-  bool _isMid = false;
-  bool _isEasy = false;
+  bool _isHard;
+  bool _isMid;
+  bool _isEasy;
 
   Level _level = Level.Hard;
 
@@ -52,6 +52,9 @@ class _MenuState extends State<MemoryCardGameMenu> {
   @override
   void initState() {
     super.initState();
+    _isHard = false;
+    _isMid = false;
+    _isEasy = true;
   }
 
   @override
@@ -136,8 +139,22 @@ class _MenuState extends State<MemoryCardGameMenu> {
                     _kind = checkKind();
                     Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => MemoryGame(_level,_kind)));
+                        PageRouteBuilder(
+                          transitionDuration: Duration(seconds:1),
+                          transitionsBuilder: (BuildContext context,
+                          Animation<double> animation,
+                          Animation<double> secAnimation,
+                          Widget child){
+                            return ScaleTransition(
+                              alignment: Alignment.center,
+                              scale: animation,
+                              child: child,
+                            );
+                          },
+                          pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secAnimation){
+                            return MemoryGame(_level,_kind);
+                          }
+                        ));
                     print(_kindString);
                     print(_level);
                   }),

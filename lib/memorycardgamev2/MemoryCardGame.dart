@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:audioplayers/audio_cache.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +21,18 @@ class MemoryGame extends StatefulWidget {
 class _MemoryGameState extends State<MemoryGame> {
   _MemoryGameState(this._level, this._kind);
 
+  AudioCache _audioController = AudioCache();
+
   int _previousIndex = -1;
   bool _flip = false;
   bool _start = false;
   Kind _kind;
 
+  bool _wait = false;
   Level _level;
-
+  Timer _timer;
+  int _time = 5;
+  int _left;
   bool _isFinished;
   List<String> _data;
 
@@ -55,7 +61,18 @@ class _MemoryGameState extends State<MemoryGame> {
           );
         }
         break;
+      default:
+        return null;
     }
+
+  }
+
+  startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (t) {
+      setState(() {
+        _time = _time - 1;
+      });
+    });
   }
 
   int getCrossAmount() {
@@ -69,6 +86,8 @@ class _MemoryGameState extends State<MemoryGame> {
     _data = getSourceArray(_level, _kind);
     _cardFlips = getInitialItemState(_level);
     _cardStateKeys = getCardStateKeys(_level);
+    _time = 5;
+    _left = (_data.length ~/ 2);
 
     _isFinished = false;
     Future.delayed(const Duration(seconds: 5), () {
@@ -81,6 +100,7 @@ class _MemoryGameState extends State<MemoryGame> {
   @override
   void initState() {
     super.initState();
+    startTimer();
     restart();
   }
 
@@ -125,10 +145,15 @@ class _MemoryGameState extends State<MemoryGame> {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        'Count',
-                        style: Theme.of(context).textTheme.headline3,
-                      ),
+                      child: _time > 0
+                          ? Text(
+                              '$_time',
+                              style: Theme.of(context).textTheme.headline3,
+                            )
+                          : Text(
+                              'Left:$_left',
+                              style: Theme.of(context).textTheme.headline3,
+                            ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(4.0),
@@ -150,14 +175,38 @@ class _MemoryGameState extends State<MemoryGame> {
                                     if (_previousIndex != index) {
                                       if (_data[_previousIndex] !=
                                           _data[index]) {
-                                        _cardStateKeys[_previousIndex]
-                                            .currentState
-                                            .toggleCard();
-                                        _previousIndex = index;
+                                        _wait = true;
+
+                                        Future.delayed(
+                                            const Duration(milliseconds: 1500),
+                                            () {
+                                          _audioController.play(
+                                              'memorygame/sounds/fail.mp3');
+                                          _cardStateKeys[_previousIndex]
+                                              .currentState
+                                              .toggleCard();
+                                          _previousIndex = index;
+                                          _cardStateKeys[_previousIndex]
+                                              .currentState
+                                              .toggleCard();
+
+                                          Future.delayed(
+                                              const Duration(
+                                                  milliseconds: 1600), () {
+                                            setState(() {
+                                              _wait = false;
+                                            });
+                                          });
+                                        });
                                       } else {
                                         _cardFlips[_previousIndex] = false;
                                         _cardFlips[index] = false;
                                         print(_cardFlips);
+                                        _audioController.play(
+                                            'memorygame/sounds/success.mp3');
+                                        setState(() {
+                                          _left -= 1;
+                                        });
                                         if (_cardFlips
                                             .every((t) => t == false)) {
                                           print("Won");
@@ -174,7 +223,7 @@ class _MemoryGameState extends State<MemoryGame> {
                                   }
                                   setState(() {});
                                 },
-                                flipOnTouch: _cardFlips[index],
+                                flipOnTouch: _wait ? false : _cardFlips[index],
                                 direction: FlipDirection.HORIZONTAL,
                                 front: Container(
                                   margin: EdgeInsets.all(4.0),
