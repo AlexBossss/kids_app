@@ -15,20 +15,25 @@ class GameItem extends StatelessWidget {
           print("Container clicked");
         },
         child: Container(
+            constraints: BoxConstraints(
+              maxWidth: 400.0,
+            ),
             padding: const EdgeInsets.fromLTRB(0, 20.0, 0, 0),
             //height: 180.0,
             //color: const Color(0xff0087a8),
-            child: Column(
+            child: Row(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Container(
-                  height: 130.0,
-                  padding: const EdgeInsets.all(20.0),
+                  height: 110.0,
+                  padding: const EdgeInsets.all(15.0),
                   margin: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
                           colors: [
                             _leftListGradientColor,
                             _rightListGradientColor
@@ -38,60 +43,55 @@ class GameItem extends StatelessWidget {
                           topRight: const Radius.circular(10.0),
                           bottomRight: const Radius.circular(80.0),
                           bottomLeft: const Radius.circular(10.0))),
-                  child: Stack(
+                  child: Row(
+                    // alignment: AlignmentDirectional.topStart,
                     children: <Widget>[
-                      Text(
-                        'The Memory',
-                        style: Theme.of(context).textTheme.headline5.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w300,
-                            ),
-                      ),
                       Container(
-                        constraints: BoxConstraints(maxWidth: 250.0),
-                        child: Align(
-                          alignment: Alignment.bottomLeft,
-                          child: Text(
-                            'Super game for Alex and his brain. You can stay dumb or imrove yourself,You can stay dumb or imrove yourself You can stay dumb or imrove yourself',
-                            style:
-                                Theme.of(context).textTheme.bodyText1.copyWith(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                          ),
+                        child: Column(
+                          // mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'The Memory',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontSize: 26.0,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                            Container(
+                              constraints: BoxConstraints(
+                                maxWidth: 230.0,
+                              ),
+                              child: Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  'Super game for Alex and his brain. You can stay dumb or imrove yourself, You can stay',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontSize: 14.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-
-                      // Align(
-                      //   alignment: Alignment.bottomRight,
-                      //   child: FloatingActionButton(
-                      //     heroTag: "btn1",
-                      //     backgroundColor: const Color(0xff0087a8),
-                      //     onPressed: () {},
-                      //     child: Icon(
-                      //       Icons.add,
-                      //       color: Colors.white,
-                      //       size: 50.0,
-                      //     ),
-                      //   ),
-                      // )
+                      Container(
+                          height: 110,
+                          width: 110,
+                          transform:
+                              Matrix4.translationValues(10.0, -30.0, 10.0),
+                          color: Colors.transparent,
+                          child: Image.asset(
+                            'assets/memoryGame.png',
+                            fit: BoxFit.fitHeight,
+                          )),
                     ],
-                  ),
-                ),
-                Container(
-                  transform: Matrix4.translationValues(-25.0, -150.0, 0.0),
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: FloatingActionButton(
-                      heroTag: "btn2",
-                      backgroundColor: const Color(0xff0087a8),
-                      onPressed: () {},
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 50.0,
-                      ),
-                    ),
                   ),
                 ),
               ],

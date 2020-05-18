@@ -17,7 +17,8 @@ class MemoryList extends StatelessWidget {
         //     subtitle: Text('Description for game one'),
         //   ),
         // ),
-        GameItem(Colors.blue, Colors.red),
+        GameItem(Color(0xffFD84FF), Color(0xffF7E1FF)),
+        GameItem(Color(0xff7CE7FF), Color(0xffC2E9FF)),
       ]),
     );
   }

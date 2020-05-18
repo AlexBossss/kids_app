@@ -54,94 +54,107 @@ class _MenuState extends State<MemoryCardGameMenu> {
     super.initState();
   }
 
+  Color gradientStart = Color(0xFFF3D1FF); //Change start gradient color here
+  Color gradientEnd = Color(0xFF93EBFF);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  'Text',
-                  style: Theme.of(context).textTheme.headline3,
+    return Container(
+      decoration: new BoxDecoration(
+        gradient: new LinearGradient(
+          colors: [gradientStart, gradientEnd],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          //stops: [0.0, 1.0],
+        ),
+      ),
+      child: Scaffold(
+        body: SafeArea(
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    'Text',
+                    style: Theme.of(context).textTheme.headline3,
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(Level.Hard.toString().split('.').last),
-                  Switch(
-                    onChanged: (bool value) {
-                      setState(() => {
-                            this._isHard = value,
-                            this._isEasy = false,
-                            this._isMid = false
-                          });
-                    },
-                    value: this._isHard,
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(Level.Medium.toString().split('.').last),
-                  Switch(
-                    onChanged: (bool value) {
-                      setState(() => {
-                            this._isMid = value,
-                            this._isHard = false,
-                            this._isEasy = false
-                          });
-                    },
-                    value: this._isMid,
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(Level.Easy.toString().split('.').last),
-                  Switch(
-                    onChanged: (bool value) {
-                      setState(() => {
-                            this._isEasy = value,
-                            this._isHard = false,
-                            this._isMid = false
-                          });
-                    },
-                    value: this._isEasy,
-                  ),
-                ],
-              ),
-              ListTile(
-                title: Text('Card:'),
-                trailing: DropdownButton(
-                  value: _kindString,
-                  onChanged: (String newKind) {
-                    setState(() {
-                      _kindString = newKind;
-                    });
-                  },
-                  items: _dropDownMenuItems,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(Level.Hard.toString().split('.').last),
+                    Switch(
+                      onChanged: (bool value) {
+                        setState(() => {
+                              this._isHard = value,
+                              this._isEasy = false,
+                              this._isMid = false
+                            });
+                      },
+                      value: this._isHard,
+                    ),
+                  ],
                 ),
-              ),
-              RaisedButton(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Text('Start'),
-                  onPressed: () {
-                    _level = checkLevel();
-                    _kind = checkKind();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MemoryGame(_level,_kind)));
-                    print(_kindString);
-                    print(_level);
-                  }),
-            ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(Level.Medium.toString().split('.').last),
+                    Switch(
+                      onChanged: (bool value) {
+                        setState(() => {
+                              this._isMid = value,
+                              this._isHard = false,
+                              this._isEasy = false
+                            });
+                      },
+                      value: this._isMid,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(Level.Easy.toString().split('.').last),
+                    Switch(
+                      onChanged: (bool value) {
+                        setState(() => {
+                              this._isEasy = value,
+                              this._isHard = false,
+                              this._isMid = false
+                            });
+                      },
+                      value: this._isEasy,
+                    ),
+                  ],
+                ),
+                ListTile(
+                  title: Text('Card:'),
+                  trailing: DropdownButton(
+                    value: _kindString,
+                    onChanged: (String newKind) {
+                      setState(() {
+                        _kindString = newKind;
+                      });
+                    },
+                    items: _dropDownMenuItems,
+                  ),
+                ),
+                RaisedButton(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Text('Start'),
+                    onPressed: () {
+                      _level = checkLevel();
+                      _kind = checkKind();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MemoryGame(_level, _kind)));
+                      print(_kindString);
+                      print(_level);
+                    }),
+              ],
+            ),
           ),
         ),
       ),

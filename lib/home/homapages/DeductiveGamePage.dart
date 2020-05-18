@@ -8,11 +8,11 @@ import 'dedgameslists/MemoryList.dart';
 
 class DeductiveGamePage extends StatelessWidget {
   final String _title = 'D Games';
-  final List<MaterialColor> _color = [Colors.blue, Colors.purple, Colors.red];
+  final Color _color = Colors.white;
   final _dGameTabs = <Tab>[
-    Tab(text: 'Memory'),
-    Tab(text: 'Logic'),
-    Tab(text: 'Consideration'),
+    Tab(child: Text('Memory', style: TextStyle(color: Colors.black))),
+    Tab(child: Text('Logic', style: TextStyle(color: Colors.black))),
+    Tab(child: Text('Consideration', style: TextStyle(color: Colors.black))),
   ];
   final _dGamePages = [MemoryList(), LogicList(), ConsiderationList()];
 

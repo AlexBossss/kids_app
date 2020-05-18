@@ -6,7 +6,7 @@ class TabBarPage extends StatelessWidget {
   final _tabs;
   final _pages;
   final String _title;
-  final List<MaterialColor> color;
+  final Color color;
 
   TabBarPage(this._tabs, this._pages, this._title, this.color);
 
@@ -16,17 +16,24 @@ class TabBarPage extends StatelessWidget {
       child: DefaultTabController(
         length: _tabs.length,
         child: Scaffold(
-          appBar: GradientAppBar(
-            gradient: LinearGradient(colors: color),
-            title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(_title),
-                  //place for preferencesMenu
-                ]),
-            bottom: TabBar(
+          appBar: AppBar(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(30),
+              ),
+            ),
+            //labelColor: Colors.black,
+            backgroundColor: (color),
+            // title: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Text(_title),
+            //       //place for preferencesMenu
+            //     ]),
+            title: TabBar(
               //isScrollable: true,
-              indicatorColor: Colors.white,
+              indicatorColor: Colors.black,
+
               tabs: _tabs,
             ),
           ),
