@@ -18,8 +18,16 @@ class HomeState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _homePages[_currentIndex],
+      body: Stack(
+        children: <Widget>[
+          Container(
+            child: _homePages[_currentIndex],
+          ),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
+        fixedColor: Colors.black87,
+        backgroundColor: Colors.white,
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         items: [

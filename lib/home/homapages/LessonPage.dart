@@ -4,11 +4,7 @@ import 'package:kidsapp/models/TabBarPage.dart';
 
 class LessonPage extends StatelessWidget {
   final String _title = 'Lessons';
-  final List<MaterialColor> _color = [
-    Colors.red,
-    Colors.purple,
-    Colors.blue,
-  ];
+  final Color _color = Colors.transparent;
 
   final _lessonTabs = <Tab>[
     Tab(text: 'Numbers'),
