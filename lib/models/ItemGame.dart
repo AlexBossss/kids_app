@@ -2,47 +2,54 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GameItem extends StatelessWidget {
-  Color _leftListGradientColor;
-  Color _rightListGradientColor;
+  final List<Color> _itemGradient;
+  final String _gameTitle;
+  final String _gameDesc;
+  final String _imgGamePath;
+  final String _pageGame;
 
-  GameItem(this._leftListGradientColor, this._rightListGradientColor);
+  GameItem(this._itemGradient, this._gameTitle, this._gameDesc,
+      this._imgGamePath, this._pageGame);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/newPage');
-          print("Container clicked");
+          Navigator.pushNamed(context, _pageGame);
         },
         child: Container(
             constraints: BoxConstraints(
               maxWidth: 400.0,
             ),
             padding: const EdgeInsets.fromLTRB(0, 20.0, 0, 0),
-            //height: 180.0,
-            //color: const Color(0xff0087a8),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Container(
                   height: 110.0,
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.only(top: 10.0, left: 10.0),
                   margin: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            _leftListGradientColor,
-                            _rightListGradientColor
-                          ]),
-                      borderRadius: BorderRadius.only(
-                          topLeft: const Radius.circular(10.0),
-                          topRight: const Radius.circular(10.0),
-                          bottomRight: const Radius.circular(80.0),
-                          bottomLeft: const Radius.circular(10.0))),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: _itemGradient,
+                    ),
+                    borderRadius: BorderRadius.only(
+                        topLeft: const Radius.circular(10.0),
+                        topRight: const Radius.circular(10.0),
+                        bottomRight: const Radius.circular(80.0),
+                        bottomLeft: const Radius.circular(10.0)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.white.withOpacity(0.3),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
                   child: Row(
                     // alignment: AlignmentDirectional.topStart,
                     children: <Widget>[
@@ -53,7 +60,7 @@ class GameItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'The Memory',
+                              _gameTitle,
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontSize: 26.0,
@@ -68,7 +75,7 @@ class GameItem extends StatelessWidget {
                               child: Align(
                                 alignment: Alignment.bottomLeft,
                                 child: Text(
-                                  'Super game for Alex and his brain. You can stay dumb or imrove yourself, You can stay',
+                                  _gameDesc,
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontSize: 14.0,
@@ -82,13 +89,14 @@ class GameItem extends StatelessWidget {
                         ),
                       ),
                       Container(
-                          height: 110,
-                          width: 110,
+                          height: 140,
+                          width: 140,
                           transform:
-                              Matrix4.translationValues(10.0, -30.0, 10.0),
+                              Matrix4.translationValues(20.0, -30.0, 10.0),
                           color: Colors.transparent,
                           child: Image.asset(
-                            'assets/memoryGame.png',
+                            _imgGamePath,
+                            //'assets/memoryGame.png',
                             fit: BoxFit.fitHeight,
                           )),
                     ],

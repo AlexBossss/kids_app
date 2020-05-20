@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ConsiderationList extends StatelessWidget {
+class AttentionList extends StatelessWidget {
   final _listItems = <Widget>[
     ListTile(
       leading: Icon(Icons.cloud),
