@@ -7,11 +7,13 @@ import 'package:kidsapp/games/remembercardgame/Data.dart';
 import 'package:kidsapp/games/remembercardgame/RememberCard.dart';
 
 class RememberCardRound extends StatefulWidget {
+  final int amountOfSearchItems;
 
- final int amountOfSearchItems;
   RememberCardRound({this.amountOfSearchItems});
+
   @override
-  _RememberCardRoundState createState() => _RememberCardRoundState(amountOfSearchItems: amountOfSearchItems);
+  _RememberCardRoundState createState() =>
+      _RememberCardRoundState(amountOfSearchItems: amountOfSearchItems);
 }
 
 class _RememberCardRoundState extends State<RememberCardRound> {
@@ -28,19 +30,20 @@ class _RememberCardRoundState extends State<RememberCardRound> {
   List<String> getSearchItems(int amount) {
     List<String> items = [];
     for (int i = 0; i < amount; i++) {
-      items.add(animals[_random.nextInt(_data.length)]);
+      items.add(_data[i]);
     }
     return items;
-  }
-
-  void increaseIndex(){
-    RememberCardState.index++;
   }
 
   List<Widget> getSearchItemPic() {
     List<Widget> searchItemPic = [];
     _searchItems.forEach((element) {
-      searchItemPic.add(Image.asset(element));
+      searchItemPic.add(
+        Container(
+          height: 100,
+          child: Image.asset(element),
+        ),
+      );
     });
     return searchItemPic;
   }
@@ -60,7 +63,7 @@ class _RememberCardRoundState extends State<RememberCardRound> {
     _data = getData();
     _searchItems = getSearchItems(amountOfSearchItems);
     _isDone = getIsDoneList(_data);
-  
+
     super.initState();
   }
 
@@ -70,12 +73,12 @@ class _RememberCardRoundState extends State<RememberCardRound> {
         ? Container(
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(10.0),
                 child: GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
+                    crossAxisCount: 3,
                   ),
                   itemBuilder: (context, index) => FlipCard(
                     onFlip: () {
@@ -84,8 +87,13 @@ class _RememberCardRoundState extends State<RememberCardRound> {
                         setState(() {
                           _isDone[index] = true;
                         });
-                        if(_isDone.where((element) => element == true).toList().length == amountOfSearchItems){
-                          increaseIndex();
+                        if (_isDone
+                                .where((element) => element == true)
+                                .toList()
+                                .length ==
+                            amountOfSearchItems) {
+                          RememberCardState().nextRound();
+                          print('found');
                         }
                       }
                       print(_isDone[index]);
@@ -95,13 +103,11 @@ class _RememberCardRoundState extends State<RememberCardRound> {
                         !_isDone[index]),
                     direction: FlipDirection.HORIZONTAL,
                     front: Container(
-                      margin: EdgeInsets.all(4.0),
-                      color: Colors.white,
+                      margin: EdgeInsets.all(10.0),
                       child: Image.asset(_data[index]),
                     ),
                     back: Container(
-                      margin: EdgeInsets.all(4.0),
-                      color: Colors.white,
+                      margin: EdgeInsets.all(10.0),
                       child: Image.asset(correct),
                     ),
                   ),
@@ -114,7 +120,7 @@ class _RememberCardRoundState extends State<RememberCardRound> {
             child: Center(
               child: Column(
                 children: <Widget>[
-                  Column(
+                  Wrap(
                     children: getSearchItemPic(),
                   ),
                   GestureDetector(
