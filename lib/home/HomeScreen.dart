@@ -14,7 +14,9 @@ class HomeState extends State<HomeScreen> {
     DeductiveGamePage(),
     LessonPage(),
   ];
-  int _currentIndex = 0;
+  static var index = new ValueNotifier(0);
+  static bool active = true;
+  static bool disable = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +30,17 @@ class HomeState extends State<HomeScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Stack(
-          children: <Widget>[
-            Container(
-              child: _homePages[_currentIndex],
-            ),
-          ],
-        ),
+        body: ValueListenableBuilder<int>(
+            valueListenable: index,
+            builder: (context, value, child) {
+              return IndexedStack(
+                index: index.value,
+                children: _homePages,
+              );
+            }),
         bottomNavigationBar: _getNavBar(context),
 
-        // BottomNavigationBar(
+        //BottomNavigationBar(
         //   fixedColor: Colors.black87,
         //   backgroundColor: Colors.white,
         //   currentIndex: _currentIndex,
@@ -93,9 +96,9 @@ _getNavBar(context) {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              _buildNavItem(Icons.hotel, false),
+              _buildNavItem(Icons.hotel, 0, HomeState.active),
               SizedBox(width: 1),
-              _buildNavItem(Icons.landscape, true),
+              _buildNavItem(Icons.landscape, 1, HomeState.active),
             ],
           ),
         ),
@@ -124,18 +127,25 @@ _getNavBar(context) {
   );
 }
 
-_buildNavItem(IconData icon, bool active) {
+_buildNavItem(IconData icon, int pageIndex, bool active) {
   return CircleAvatar(
     radius: 30,
     backgroundColor: Color(0xFF07A65F),
     child: CircleAvatar(
       radius: 25,
       backgroundColor:
-          active ? Colors.white.withOpacity(0.9) : Colors.transparent,
-      child: Icon(
-        icon,
-        color: active ? Colors.black : Colors.white.withOpacity(0.9),
+          active ? Colors.white.withOpacity(0.3) : Colors.transparent,
+      child: IconButton(
+        icon: Icon(icon),
+        onPressed: () {
+          HomeState.index.value = pageIndex;
+        },
       ),
+
+      //  Icon(
+      //   icon,
+      //   color: active ? Colors.black : Colors.white.withOpacity(0.9),
+      // ),
     ),
   );
 }
