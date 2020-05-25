@@ -4,8 +4,6 @@ import 'package:kidsapp/models/ItemGame.dart';
 import 'package:kidsapp/src/theme/color/light_color.dart';
 
 class MemoryList extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +27,9 @@ class MemoryList extends StatelessWidget {
               'Memory',
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
+
               '/rememberCard'),
+
           GameItem(
               LightColor.itemGameBackground3,
               'Memory',
