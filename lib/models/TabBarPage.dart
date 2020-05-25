@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:kidsapp/src/theme/color/light_color.dart';
 
 class TabBarPage extends StatelessWidget {
@@ -17,13 +16,13 @@ class TabBarPage extends StatelessWidget {
       child: DefaultTabController(
         length: _tabs.length,
         child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: LightColor.homeBackgroundGradient,
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
-          ),
+          // decoration: BoxDecoration(
+          //   gradient: LinearGradient(
+          //     colors: LightColor.homeBackgroundGradient,
+          //     begin: Alignment.bottomCenter,
+          //     end: Alignment.topCenter,
+          //   ),
+          // ),
           child: Scaffold(
             backgroundColor: Colors.transparent,
             body: Stack(

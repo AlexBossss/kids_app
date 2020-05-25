@@ -7,13 +7,7 @@ class MemoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: LightColor.homeBackgroundGradient,
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-      ),
+      decoration: BoxDecoration(),
       child: Center(
         child: Column(children: [
           GameItem(
@@ -33,7 +27,7 @@ class MemoryList extends StatelessWidget {
               'Memory',
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
-              '/memoryCardGame'),
+              '/'),
         ]),
       ),
     );
