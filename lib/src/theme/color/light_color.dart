@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class LightColor {
-  static const Color background = Color(0XFFFFFFFF);
+  static const Color background = Color(0XFF000000);
 
   static const List<Color> homeBackgroundGradient = [
-    Color(0xFFE3B8FF),
-    Color(0xFF7FE7EE)
+    Color(0xFFEFFFF4),
+    Color(0xFFF5EFFF)
   ];
   static const List<Color> itemGameBackground1 = [
     Color(0xffFFE5C2),
