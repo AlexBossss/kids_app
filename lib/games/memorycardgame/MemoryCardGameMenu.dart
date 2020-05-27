@@ -10,34 +10,22 @@ class MemoryCardGameMenu extends StatefulWidget {
 }
 
 class _MenuState extends State<MemoryCardGameMenu> {
-  bool _isHard;
-  bool _isMid;
-  bool _isEasy;
-
   Level _level = Level.Hard;
 
-  String _kindString = Kind.Animals.toString().split('.').last;
+  List<String> selectedCategory = List<String>();
+
+  String animals = 'Animals';
+  String numbers = 'Numbers';
 
   Kind _kind;
 
   Kind checkKind() {
-    if (_kindString == 'Animals') {
+    if (selectedCategory[0] == 'Animals') {
       return Kind.Animals;
     } else {
       return Kind.Numbers;
     }
   }
-
-  static const List<String> kinds = <String>['Animals', 'Numbers'];
-
-  final List<DropdownMenuItem<String>> _dropDownMenuItems = kinds
-      .map(
-        (String value) => DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        ),
-      )
-      .toList();
 
   Level checkLevel() {
     if (isSelected[2] == true) {
@@ -54,10 +42,9 @@ class _MenuState extends State<MemoryCardGameMenu> {
   @override
   void initState() {
     isSelected = [true, false, false];
+    selectedCategory = List<String>();
+    selectedCategory.add(animals);
     super.initState();
-    // _isHard = false;
-    // _isMid = false;
-    // _isEasy = true;
   }
 
   @override
@@ -78,95 +65,223 @@ class _MenuState extends State<MemoryCardGameMenu> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  ToggleButtons(
-                    selectedColor: Colors.orange,
-                    children: <Widget>[
-                      Icon(
-                        Icons.star_half,
-                        size: 80.0,
+                  Container(
+                    padding: EdgeInsets.zero,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF7178D3),
+                      //border: Border.all(color: Color(0xFFE3E9FF), width: 1.0),
+                      borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(50.0),
+                          topRight: const Radius.circular(5.0),
+                          bottomRight: const Radius.circular(50.0),
+                          bottomLeft: const Radius.circular(5.0)),
+                    ),
+                    child: ToggleButtons(
+                      fillColor: Color(0xFFFFFFFF),
+                      focusColor: Color(0xFF7178D3),
+                      borderRadius: BorderRadius.only(
+                          topLeft: const Radius.circular(50.0),
+                          topRight: const Radius.circular(5.0),
+                          bottomRight: const Radius.circular(50.0),
+                          bottomLeft: const Radius.circular(5.0)),
+                      borderWidth: 2,
+                      splashColor: Colors.amber,
+                      // fillColor: Colors.blue,
+                      //highlightColor: Colors.cyan,
+                      textStyle: TextStyle(
+                        fontSize: 26.0,
+                        fontWeight: FontWeight.w300,
                       ),
-                      Icon(
-                        Icons.star,
-                        size: 80.0,
-                      ),
-                      Icon(
-                        Icons.stars,
-                        size: 80.0,
-                      ),
-                    ],
-                    onPressed: (int index) {
-                      setState(() {
-                        for (int buttonIndex = 0;
-                            buttonIndex < isSelected.length;
-                            buttonIndex++) {
-                          if (buttonIndex == index) {
-                            isSelected[buttonIndex] = true;
-                          } else {
-                            isSelected[buttonIndex] = false;
+                      selectedColor: Colors.deepOrange,
+                      children: <Widget>[
+                        Container(
+                          decoration: BoxDecoration(
+                              //color: Color(0xFF7178D3),
+
+                              //   borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                              //   border: Border.all(
+                              //       color: Colors.white,
+                              //       width: 5.0,
+                              //       style: BorderStyle.solid),
+                              ),
+                          child: Column(
+                            //mainAxisSize: MainAxisSize.min,
+                            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Container(
+                                //height: 40,
+                                width: 120.0,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.star,
+                                      size: 30.0,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                child: Text("Easy"),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 120.0,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.star,
+                                      size: 30.0,
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      size: 30.0,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Text("Normal")
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 120.0,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.star,
+                                      size: 30.0,
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      size: 30.0,
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      size: 30.0,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Text("Hard")
+                            ],
+                          ),
+                        ),
+                      ],
+                      onPressed: (int index) {
+                        setState(() {
+                          for (int buttonIndex = 0;
+                              buttonIndex < isSelected.length;
+                              buttonIndex++) {
+                            if (buttonIndex == index) {
+                              isSelected[buttonIndex] = true;
+                            } else {
+                              isSelected[buttonIndex] = false;
+                            }
                           }
-                        }
-                      });
-                    },
-                    isSelected: isSelected,
+                        });
+                      },
+                      isSelected: isSelected,
+                    ),
                   ),
                 ],
-
-                //   <Widget>[
-                //     Text(Level.Hard.toString().split('.').last),
-                //     Switch(
-                //       onChanged: (bool value) {
-                //         setState(() => {
-                //               this._isHard = value,
-                //               this._isEasy = false,
-                //               this._isMid = false
-                //             });
-                //       },
-                //       value: this._isHard,
-                //     ),
-                //   ],
-                // ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: <Widget>[
-                //     Text(Level.Medium.toString().split('.').last),
-                //     Switch(
-                //       onChanged: (bool value) {
-                //         setState(() => {
-                //               this._isMid = value,
-                //               this._isHard = false,
-                //               this._isEasy = false
-                //             });
-                //       },
-                //       value: this._isMid,
-                //     ),
-                //   ],
-                // ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: <Widget>[
-                //     Text(Level.Easy.toString().split('.').last),
-                //     Switch(
-                //       onChanged: (bool value) {
-                //         setState(() => {
-                //               this._isEasy = value,
-                //               this._isHard = false,
-                //               this._isMid = false
-                //             });
-                //       },
-                //       value: this._isEasy,
-                //     ),
-                //   ],
               ),
-              ListTile(
-                title: Text('Card:'),
-                trailing: DropdownButton(
-                  value: _kindString,
-                  onChanged: (String newKind) {
-                    setState(() {
-                      _kindString = newKind;
-                    });
-                  },
-                  items: _dropDownMenuItems,
+              Container(
+                padding: EdgeInsets.only(
+                    top: 4.0, left: 0.0, right: 0.0, bottom: 6.0),
+                child: Container(
+                  child: Center(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 4.0,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(left: 10.0, right: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              SizedBox(
+                                width: 2.0,
+                              ),
+                              InkWell(
+                                splashColor: Colors.blue[100],
+                                onTap: () {
+                                  selectedCategory = List<String>();
+                                  selectedCategory.add(animals);
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 10.0, horizontal: 12.0),
+                                  decoration: BoxDecoration(
+                                    color: selectedCategory.contains(animals)
+                                        ? Colors.blue[100]
+                                        : Colors.grey[300],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(48.0)),
+                                  ),
+                                  child: Text(
+                                    'Животины',
+                                    style: TextStyle(
+                                        color: Colors.grey[900],
+                                        fontSize: 10.0,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 2.0,
+                              ),
+                              InkWell(
+                                splashColor: Colors.blue[100],
+                                onTap: () {
+                                  selectedCategory = new List<String>();
+                                  selectedCategory.add(numbers);
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 10.0, horizontal: 12.0),
+                                  decoration: BoxDecoration(
+                                    color: selectedCategory.contains(numbers)
+                                        ? Colors.blue[100]
+                                        : Colors.grey[300],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(48.0)),
+                                  ),
+                                  child: Text(
+                                    'Чиселки',
+                                    style: TextStyle(
+                                        color: Colors.grey[900],
+                                        fontSize: 10.0,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 6.0,
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ),
               RaisedButton(
@@ -194,8 +309,6 @@ class _MenuState extends State<MemoryCardGameMenu> {
                                 Animation<double> secAnimation) {
                               return MemoryGame(_level, _kind);
                             }));
-                    print(_kindString);
-                    print(_level);
                   }),
             ],
           ),
