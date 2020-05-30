@@ -29,7 +29,7 @@ class MemoryList extends StatelessWidget {
               'Memory',
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
-              '/'),
+              '/rememberOneItem'),
         ]),
       ),
     );
