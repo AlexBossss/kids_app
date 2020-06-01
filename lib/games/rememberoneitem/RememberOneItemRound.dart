@@ -16,12 +16,10 @@ class _RememberOneItemRoundState extends State<RememberOneItemRound> {
   List<String> _answers;
   double _buttonHeight = 50;
   double _topPaddingToAnimation = 400;
-  double _lefPadding = 0;
   double _heightAnswers = 0;
   bool _isDone;
+  double _answersWidth = 360;
 
-
-  int _timeForTopPadding = 800;
   @override
   void initState() {
     _isDone = false;
@@ -55,8 +53,7 @@ class _RememberOneItemRoundState extends State<RememberOneItemRound> {
   void removeAnswers() {
     Future.delayed(Duration(milliseconds: 900), () {
       setState(() {
-        _lefPadding = 500;
-        _timeForTopPadding = 200;
+        _answersWidth = 0;
       });
     });
   }
@@ -90,34 +87,41 @@ class _RememberOneItemRoundState extends State<RememberOneItemRound> {
               alignment: Alignment.center,
               height: _buttonHeight,
               width: 200,
-              child: Text('Pidr'),
+              child: Text('Go'),
               color: Colors.green,
             ),
           ),
           AnimatedPadding(
-            padding:
-                EdgeInsets.only(top: _topPaddingToAnimation, left: _lefPadding),
-            duration: Duration(milliseconds: _timeForTopPadding),
+            padding: EdgeInsets.only(
+              top: _topPaddingToAnimation,
+            ),
+            duration: Duration(milliseconds: 800),
             child: AnimatedContainer(
               height: _heightAnswers,
               curve: Curves.bounceOut,
               duration: Duration(milliseconds: 200),
-              child: Wrap(
-                children: _answers
-                    .map((e) => GestureDetector(
-                          onTap: () {
-                            if (e == _data[_random] && !_isDone) {
-                              _cardStateKeys[_random].currentState.toggleCard();
-                              _isDone = true;
-                              removeAnswers();
-                            }
-                          },
-                          child: Container(
-                            child: Image.asset(e),
-                            height: 90,
-                          ),
-                        ))
-                    .toList(),
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 400),
+                width: _answersWidth,
+                child: Wrap(
+                  children: _answers
+                      .map((e) => GestureDetector(
+                            onTap: () {
+                              if (e == _data[_random] && !_isDone) {
+                                _cardStateKeys[_random]
+                                    .currentState
+                                    .toggleCard();
+                                _isDone = true;
+                                removeAnswers();
+                              }
+                            },
+                            child: Container(
+                              child: Image.asset(e),
+                              height: 90,
+                            ),
+                          ))
+                      .toList(),
+                ),
               ),
             ),
           ),

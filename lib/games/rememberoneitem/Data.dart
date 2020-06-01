@@ -1,5 +1,6 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:kidsapp/games/rememberoneitem/RememberOneItemRound.dart';
 
 List<String> animals = [
   'assets/animalspics/fox.png',
@@ -29,3 +30,11 @@ List <GlobalKey<FlipCardState>>  getKeys(){
   }
   return keys;
 }
+
+List<RememberOneItemRound> oneItemRounds = [
+  RememberOneItemRound(),
+  RememberOneItemRound(),
+  RememberOneItemRound(),
+  RememberOneItemRound(),
+  RememberOneItemRound(),
+];

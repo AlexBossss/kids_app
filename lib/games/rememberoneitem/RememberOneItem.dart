@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kidsapp/games/rememberoneitem/Data.dart';
 import 'package:kidsapp/games/rememberoneitem/RememberOneItemRound.dart';
 
 class RememberOneItem extends StatefulWidget {
@@ -11,11 +12,22 @@ class _RememberOneItemState extends State<RememberOneItem> {
 
   static var _index;
 
+
+
+  void _restart() {
+//    _progress = new ValueNotifier(0.0);
+    _index = new ValueNotifier(0);
+  }
+
+
   @override
   void initState() {
-    _index = ValueNotifier(0);
+    _restart();
     super.initState();
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {

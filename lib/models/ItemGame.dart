@@ -89,10 +89,10 @@ class GameItem extends StatelessWidget {
                         ),
                       ),
                       Container(
-                          height: 140,
-                          width: 140,
+                          height: 100,
+                          width: 100,
                           transform:
-                              Matrix4.translationValues(20.0, -30.0, 10.0),
+                              Matrix4.translationValues(0.0, -30.0, 10.0),
                           color: Colors.transparent,
                           child: Image.asset(
                             _imgGamePath,
