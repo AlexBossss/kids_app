@@ -27,10 +27,12 @@ class _RememberCardRoundState extends State<RememberCardRound> {
   _RememberCardRoundState({this.amountOfSearchItems});
 
   List<String> getSearchItems(int amount) {
+    _data.shuffle();
     List<String> items = [];
     for (int i = 0; i < amount; i++) {
       items.add(_data[i]);
     }
+    items.shuffle();
     return items;
   }
 

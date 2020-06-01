@@ -9,28 +9,34 @@ class MemoryList extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(),
       child: Center(
-        child: ListView(
-          children: [
-            GameItem(
-                LightColor.itemGameBackground1,
-                'Memory',
-                'Super game for clever guy and girls from 3 to 5 years',
-                'assets/memorygame/memoryGame.png',
-                '/memoryCardGame'),
-            GameItem(
-                LightColor.itemGameBackground2,
-                'Memory',
-                'Super game for clever guy and girls from 3 to 5 years',
-                'assets/memorygame/memoryGame.png',
-                '/rememberCard'),
-            GameItem(
-                LightColor.itemGameBackground3,
-                'Memory',
-                'Super game for clever guy and girls from 3 to 5 years',
-                'assets/memorygame/memoryGame.png',
-                '/rememberOneItem'),
-          ],
-        ),
+        child: ListView(children: [
+          GameItem(
+              LightColor.itemGameBackground1,
+              'Memory',
+              'Super game for clever guy and girls from 3 to 5 years',
+              'assets/memorygame/memoryGame.png',
+              '/memoryCardGame'),
+          GameItem(
+              LightColor.itemGameBackground2,
+              'Memory',
+              'Super game for clever guy and girls from 3 to 5 years',
+              'assets/memorygame/memoryGame.png',
+
+              '/rememberCard'),
+
+          GameItem(
+              LightColor.itemGameBackground3,
+              'Memory',
+              'Super game for clever guy and girls from 3 to 5 years',
+              'assets/memorygame/memoryGame.png',
+              '/rememberOrder'),
+          GameItem(
+              LightColor.itemGameBackground3,
+              'Memory',
+              'Super game for clever guy and girls from 3 to 5 years',
+              'assets/memorygame/memoryGame.png',
+              '/rememberOneItem'),
+        ]),
       ),
     );
   }
