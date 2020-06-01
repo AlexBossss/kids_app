@@ -17,9 +17,14 @@ List<String> animals = [
 String missing = 'assets/animalspics/question.png';
 
 int itemAmounts = 4;
-List <String> getData(){
-  animals.shuffle();
+List <String> getData(int part){
+
+  if(part == 1){
+    animals.shuffle();
   return animals.sublist(0,itemAmounts);
+  } else {
+    return animals.sublist(itemAmounts,8);
+  }
 }
 
 

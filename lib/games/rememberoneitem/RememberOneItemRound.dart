@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kidsapp/games/rememberoneitem/Data.dart';
 
+import 'RememberOneItem.dart';
+
 class RememberOneItemRound extends StatefulWidget {
   @override
   _RememberOneItemRoundState createState() => _RememberOneItemRoundState();
@@ -15,7 +17,7 @@ class _RememberOneItemRoundState extends State<RememberOneItemRound> {
   List<GlobalKey<FlipCardState>> _cardStateKeys;
   List<String> _answers;
   double _buttonHeight = 50;
-  double _topPaddingToAnimation = 400;
+  double _topPaddingToAnimation = 300;
   double _heightAnswers = 0;
   bool _isDone;
   double _answersWidth = 360;
@@ -24,19 +26,15 @@ class _RememberOneItemRoundState extends State<RememberOneItemRound> {
   void initState() {
     _isDone = false;
     _cardStateKeys = getKeys();
-    _data = getData();
+    _data = getData(1);
+    _data.shuffle();
     _random = Random().nextInt(4);
     _answers = getAnswers();
     super.initState();
   }
 
   List getAnswers() {
-    List answers = getData();
-    answers.forEach((element) {
-      while (element == _data[_random]) {
-        answers = getData();
-      }
-    });
+    List answers = getData(2);
     answers[_random] = _data[_random];
     answers.shuffle();
     return answers;
@@ -113,6 +111,7 @@ class _RememberOneItemRoundState extends State<RememberOneItemRound> {
                                     .toggleCard();
                                 _isDone = true;
                                 removeAnswers();
+                                RememberOneItemState().nextRound();
                               }
                             },
                             child: Container(
