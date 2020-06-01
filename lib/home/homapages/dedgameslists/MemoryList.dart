@@ -30,8 +30,9 @@ class MemoryList extends StatelessWidget {
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
               '/rememberOrder'),
+
           GameItem(
-              LightColor.itemGameBackground3,
+              LightColor.itemGameBackground4,
               'Memory',
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
