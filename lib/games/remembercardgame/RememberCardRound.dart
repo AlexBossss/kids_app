@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +16,7 @@ class RememberCardRound extends StatefulWidget {
 }
 
 class _RememberCardRoundState extends State<RememberCardRound> {
-  static var _random;
+
   List<String> _searchItems;
   bool _action;
   List<String> _data;
@@ -60,7 +59,7 @@ class _RememberCardRoundState extends State<RememberCardRound> {
 
   @override
   void initState() {
-    _random = new Random();
+
     _action = false;
     _data = getData();
     _searchItems = getSearchItems(amountOfSearchItems);

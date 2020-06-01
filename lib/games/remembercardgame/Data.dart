@@ -10,7 +10,6 @@ List<String> animals = [
   'assets/animalspics/rabbit.png',
   'assets/animalspics/andrew.png',
   'assets/animalspics/zoo.png'
-
 ];
 String correct = 'assets/animalspics/correct.png';
 

@@ -9,7 +9,7 @@ class MemoryList extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(),
       child: Center(
-        child: Column(children: [
+        child: ListView(children: [
           GameItem(
               LightColor.itemGameBackground1,
               'Memory',
@@ -30,6 +30,13 @@ class MemoryList extends StatelessWidget {
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
               '/rememberOrder'),
+
+          GameItem(
+              LightColor.itemGameBackground4,
+              'Memory',
+              'Super game for clever guy and girls from 3 to 5 years',
+              'assets/memorygame/memoryGame.png',
+              '/rememberOneItem'),
         ]),
       ),
     );
