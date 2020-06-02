@@ -21,6 +21,7 @@ class _RememberOneItemRoundState extends State<RememberOneItemRound> {
   double _heightAnswers = 0;
   bool _isDone;
   double _answersWidth = 360;
+  int _random;
 
   @override
   void initState() {
@@ -28,7 +29,7 @@ class _RememberOneItemRoundState extends State<RememberOneItemRound> {
     _cardStateKeys = getKeys();
     _data = getData(1);
     _data.shuffle();
-    _random = Random().nextInt(4);
+    _random = Random().nextInt(_data.length);
     _answers = getAnswers();
     super.initState();
   }
@@ -55,8 +56,6 @@ class _RememberOneItemRoundState extends State<RememberOneItemRound> {
       });
     });
   }
-
-  int _random;
 
   @override
   Widget build(BuildContext context) {

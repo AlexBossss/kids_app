@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kidsapp/games/remembercardgame/RememberCard.dart';
 import 'package:kidsapp/games/rememberorder/RememberOrder.dart';
 import 'package:kidsapp/games/rememberoneitem/RememberOneItem.dart';
+import 'package:kidsapp/games/whereiam/WhereIAmGame.dart';
 
 import 'package:kidsapp/home/HomeScreen.dart';
 import 'games/memorycardgame/MemoryCardGameMenu.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/rememberCard' : (BuildContext context) => RememberCard(),
         '/rememberOrder' : (BuildContext context) => RememberOrder(),
         '/rememberOneItem' : (BuildContext context) => RememberOneItem(),
+        '/whereIAmGame' : (BuildContext context) => WhereIAmGame(),
       },
     );
   }
