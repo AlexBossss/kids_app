@@ -5,6 +5,7 @@ import 'package:kidsapp/games/rememberoneitem/RememberOneItem.dart';
 import 'package:kidsapp/games/whereiam/WhereIAmGame.dart';
 
 import 'package:kidsapp/home/HomeScreen.dart';
+import 'games/attentiongames/findpair/FindPairGame.dart';
 import 'games/memorycardgame/MemoryCardGameMenu.dart';
 import 'package:kidsapp/src/theme/theme.dart';
 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/rememberOrder' : (BuildContext context) => RememberOrder(),
         '/rememberOneItem' : (BuildContext context) => RememberOneItem(),
         '/whereIAmGame' : (BuildContext context) => WhereIAmGame(),
+        '/findPairGame' : (BuildContext context) => FindPairGame(),
       },
     );
   }
