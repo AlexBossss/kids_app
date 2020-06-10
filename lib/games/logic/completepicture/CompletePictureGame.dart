@@ -112,7 +112,12 @@ class _CompletePictureGameState extends State<CompletePictureGame> {
                                         print('ture');
                                         if (_rightPosition
                                             .every((element) => element )) {
-                                          _isDone = true;
+                                          Future.delayed(const Duration(seconds: 1), () {
+                                            setState(() {
+                                              _isDone = true;
+                                            });
+                                          });
+
                                         }
                                       })
                                     }),
