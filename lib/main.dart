@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kidsapp/games/logic/completepicture/CompletePictureGame.dart';
+import 'package:kidsapp/games/logic/extraitem/ExtraItemGame.dart';
 import 'package:kidsapp/games/remembercardgame/RememberCard.dart';
 import 'package:kidsapp/games/rememberorder/RememberOrder.dart';
 import 'package:kidsapp/games/rememberoneitem/RememberOneItem.dart';
@@ -24,14 +25,14 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (BuildContext context) => HomeScreen(),
-        '/memoryCardGame' : (BuildContext context) => MemoryCardGameMenu(),
-        '/rememberCard' : (BuildContext context) => RememberCard(),
-        '/rememberOrder' : (BuildContext context) => RememberOrder(),
-        '/rememberOneItem' : (BuildContext context) => RememberOneItem(),
-        '/whereIAmGame' : (BuildContext context) => WhereIAmGame(),
-        '/findPairGame' : (BuildContext context) => FindPairGame(),
-        '/completePictureGame' : (BuildContext context) => CompletePictureGame(),
-
+        '/memoryCardGame': (BuildContext context) => MemoryCardGameMenu(),
+        '/rememberCard': (BuildContext context) => RememberCard(),
+        '/rememberOrder': (BuildContext context) => RememberOrder(),
+        '/rememberOneItem': (BuildContext context) => RememberOneItem(),
+        '/whereIAmGame': (BuildContext context) => WhereIAmGame(),
+        '/findPairGame': (BuildContext context) => FindPairGame(),
+        '/completePictureGame': (BuildContext context) => CompletePictureGame(),
+        '/extraItemGame': (BuildContext context) => ExtraItemGame(),
       },
     );
   }

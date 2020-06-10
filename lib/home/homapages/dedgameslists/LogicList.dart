@@ -16,7 +16,12 @@ class LogicList extends StatelessWidget {
               'Find pair',
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
-              '/completePictureGame'),
+              '/completePictureGame'), GameItem(
+              LightColor.itemGameBackground2,
+              'Find pair',
+              'Super game for clever guy and girls from 3 to 5 years',
+              'assets/memorygame/memoryGame.png',
+              '/extraItemGame'),
         ]),
       ),
     );
