@@ -8,6 +8,7 @@ import 'package:kidsapp/games/whereiam/WhereIAmGame.dart';
 
 import 'package:kidsapp/home/HomeScreen.dart';
 import 'games/attentiongames/findpair/FindPairGame.dart';
+import 'games/attentiongames/whatsuits/WhatSuitsGame.dart';
 import 'games/memorycardgame/MemoryCardGameMenu.dart';
 import 'package:kidsapp/src/theme/theme.dart';
 
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/findPairGame': (BuildContext context) => FindPairGame(),
         '/completePictureGame': (BuildContext context) => CompletePictureGame(),
         '/extraItemGame': (BuildContext context) => ExtraItemGame(),
+        '/whatSuits' : (BuildContext context) => WhatSuitsGame(),
       },
     );
   }

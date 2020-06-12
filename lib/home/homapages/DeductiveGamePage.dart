@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kidsapp/models/TabBarPage.dart';
-import 'dedgameslists/ConsiderationList.dart';
+import 'dedgameslists/AttentionList.dart';
 import 'dedgameslists/LogicList.dart';
 import 'dedgameslists/MemoryList.dart';
 
@@ -19,7 +19,7 @@ class DeductiveGamePage extends StatelessWidget {
         child: Text('Attention',
             style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w800))),
   ];
-  final _dGamePages = [MemoryList(), LogicList(), ConsiderationList()];
+  final _dGamePages = [MemoryList(), LogicList(), AttentionList()];
 
   @override
   Widget build(BuildContext context) {
