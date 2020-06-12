@@ -4,6 +4,7 @@ import 'package:kidsapp/models/ItemGame.dart';
 import 'package:kidsapp/src/theme/color/light_color.dart';
 
 class LogicList extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Container(
