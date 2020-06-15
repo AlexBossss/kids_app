@@ -28,6 +28,12 @@ class LogicList extends StatelessWidget {
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
               '/rightWayGame'),
+          GameItem(
+              LightColor.itemGameBackground3,
+              'Right Way Game',
+              'Super game for clever guy and girls from 3 to 5 years',
+              'assets/memorygame/memoryGame.png',
+              '/paintPicGame'),
         ]),
       ),
     );
