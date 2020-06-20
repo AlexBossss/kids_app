@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:kidsapp/games/logic/extraitem/RoundData.dart';
+import 'package:kidsapp/games/logic/extraitem/ExtraItemGame.dart';
 
 
-import 'package:provider/provider.dart';
 
 class Item extends StatefulWidget {
   Item(this.pic, {this.isExtra});
@@ -26,7 +25,6 @@ class _ItemState extends State<Item> with SingleTickerProviderStateMixin {
   AnimationController animationController;
   Animation<double> angleAnimation;
 
-  RoundData roundData;
   String pic;
   double _itemSize;
   bool isExtra;
@@ -38,7 +36,7 @@ class _ItemState extends State<Item> with SingleTickerProviderStateMixin {
         _itemSize = 0;
       });
       Future.delayed(const Duration(milliseconds: 1250), (){
-        Provider.of<RoundData>(context,listen: false).moveRound();
+        ExtraItemGameState.roundGameModel.nextRound();
       });
     }
   }

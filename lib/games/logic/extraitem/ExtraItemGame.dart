@@ -1,41 +1,36 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:kidsapp/games/logic/extraitem/RoundData.dart';
-import 'package:provider/provider.dart';
+import 'package:kidsapp/games/logic/extraitem/ExtraItemGameRound.dart';
+import 'package:kidsapp/models/RoundGameModel.dart';
 
-import 'ExtraItemGameRound.dart';
+class ExtraItemGame extends StatefulWidget {
+  @override
+  ExtraItemGameState createState() => ExtraItemGameState();
+}
 
-class ExtraItemGame extends StatelessWidget {
-  final List<ExtraItemGameRound> rounds = [
-    ExtraItemGameRound(),
-    ExtraItemGameRound(),
-    ExtraItemGameRound(),
-    ExtraItemGameRound(),
-    ExtraItemGameRound(),
-  ];
+class ExtraItemGameState extends State<ExtraItemGame> {
+  List<ExtraItemGameRound> _rounds;
+
+  static RoundGameModel roundGameModel;
+
+  @override
+  void initState() {
+
+    _rounds = [
+      ExtraItemGameRound(),
+      ExtraItemGameRound(),
+      ExtraItemGameRound(),
+      ExtraItemGameRound(),
+      ExtraItemGameRound(),
+      ExtraItemGameRound(),
+    ];
+    roundGameModel = RoundGameModel(_rounds);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: Column(
-        children: <Widget>[
-
-          Consumer<RoundData>(
-            builder: (context, container, child) {
-              return Column(
-                children: <Widget>[
-                  Text('${container.getIndex}'),
-                  IndexedStack(
-                    index: container.getIndex,
-                    children: rounds,
-                  )
-                ],
-              );
-            },
-          ),
-        ],
-      )),
+    return Container(
+      child: roundGameModel,
     );
   }
 }
