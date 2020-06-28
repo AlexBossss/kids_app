@@ -15,8 +15,9 @@ class ExtraItemGameRound extends StatelessWidget {
             children: _data
                 .map(
                   (e) => Container(
-                    margin: EdgeInsets.all(20),
-                    width: 100,
+                    margin: EdgeInsets.all(10),
+                    height: 110,
+                    width: 110,
                     child: e,
                   ),
                 )

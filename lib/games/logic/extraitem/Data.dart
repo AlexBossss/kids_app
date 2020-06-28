@@ -1,29 +1,23 @@
 import 'Item.dart';
 
 List<String> square = [
-  'assets/shapedpics/square/fridge.svg',
-  'assets/shapedpics/square/letter.svg',
-  'assets/shapedpics/square/note.svg',
-  'assets/shapedpics/square/phone.svg',
-  'assets/shapedpics/square/present.svg',
-  'assets/shapedpics/square/tv.svg',
-  'assets/shapedpics/square/washer.svg',
-  'assets/shapedpics/square/window.svg',
+  'assets/shapedpics/square/squareLetter.flr',
+  'assets/shapedpics/square/squareNote.flr',
+  'assets/shapedpics/square/squareTV.flr',
+  'assets/shapedpics/square/squareWasher.flr',
+  'assets/shapedpics/square/squareWindow.flr',
 ];
 
 List<String> circle = [
-  'assets/shapedpics/circle/ballon.svg',
-  'assets/shapedpics/circle/bowling.svg',
-  'assets/shapedpics/circle/pig.svg',
-  'assets/shapedpics/circle/newyear.svg',
+  'assets/shapedpics/circle/circleBallon.flr',
+  'assets/shapedpics/circle/circleBowling.flr',
+  'assets/shapedpics/circle/circleNewYearBall.flr',
 ];
 
 List<String> triangle = [
-  'assets/shapedpics/triangle/cheese.svg',
-  'assets/shapedpics/triangle/house.svg',
-  'assets/shapedpics/triangle/pizza.svg',
-  'assets/shapedpics/triangle/shelter.svg',
-  'assets/shapedpics/triangle/watermelon.svg',
+  'assets/shapedpics/triangle/triangleCheese.flr',
+  'assets/shapedpics/triangle/triangleHause.flr',
+  'assets/shapedpics/triangle/triangleWatermelon.flr',
 ];
 
 List<List<String>> figures = [triangle, square, circle];
@@ -44,9 +38,9 @@ List<Item> getShapeData() {
       extraItemList[0],
       isExtra: true,
     ),
-    Item(otherItemsList[0]),
-    Item(otherItemsList[1]),
-    Item(otherItemsList[2]),
+    Item(otherItemsList[0],isExtra: false,),
+    Item(otherItemsList[1],isExtra: false,),
+    Item(otherItemsList[2],isExtra: false,),
   ];
   data.shuffle();
   return data;

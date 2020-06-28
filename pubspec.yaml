@@ -28,6 +28,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
   flutter_svg: ^0.17.0
+  flare_flutter: any
   gradient_app_bar: ^0.1.3
   audioplayers: 0.11.0
   provider: ^4.1.3
