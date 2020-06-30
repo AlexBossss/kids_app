@@ -21,21 +21,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: AppTheme.lightTheme,
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (BuildContext context) => HomeScreen(),
-        '/memoryCardGame': (BuildContext context) => MemoryCardGameMenu(),
-        '/rememberCard': (BuildContext context) => RememberCard(),
-        '/rememberOrder': (BuildContext context) => RememberOrder(),
-        '/rememberOneItem': (BuildContext context) => RememberOneItem(),
-        '/whereIAmGame': (BuildContext context) => WhereIAmGame(),
-        '/findPairGame': (BuildContext context) => FindPairGame(),
-        '/completePictureGame': (BuildContext context) => CompletePictureGame(),
-        '/extraItemGame': (BuildContext context) => ExtraItemGame(),
-        '/whatSuits' : (BuildContext context) => WhatSuitsGame(),
-      },
+        theme: AppTheme.lightTheme,
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/': (BuildContext context) => HomeScreen(),
+          '/memoryCardGame': (BuildContext context) => MemoryCardGameMenu(),
+          '/rememberCard': (BuildContext context) => RememberCard(),
+          '/rememberOrder': (BuildContext context) => RememberOrder(),
+          '/rememberOneItem': (BuildContext context) => RememberOneItem(),
+          '/whereIAmGame': (BuildContext context) => WhereIAmGame(),
+          '/findPairGame': (BuildContext context) => FindPairGame(),
+          '/completePictureGame': (BuildContext context) => CompletePictureGame(),
+          '/extraItemGame': (BuildContext context) => ExtraItemGame(),
+          '/whatSuits' : (BuildContext context) => WhatSuitsGame(),
+        },
     );
   }
 }
