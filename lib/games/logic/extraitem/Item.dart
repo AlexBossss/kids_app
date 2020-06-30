@@ -5,6 +5,8 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kidsapp/games/logic/extraitem/ExtraItemGame.dart';
+import 'package:kidsapp/models/Bob.dart';
+import 'package:provider/provider.dart';
 
 class Item extends StatefulWidget {
   Item(this.pic, {this.isExtra});
@@ -29,13 +31,14 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
   AnimationController wrongAnswerAnimationController;
   Animation<double> wrongAnswerAngleAnimation;
 
-  int _wrongAnimationTime =  1000;
+  int _wrongAnimationTime = 1000;
 
   String pic;
   double _itemSize;
   bool isExtra;
 
   removeItem() {
+    Provider.of<BobData>(context, listen: false).changeAnimation('Dance');
     if (isExtra == true) {
       setState(() {
         _itemSize = 110;
@@ -50,8 +53,9 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
   }
 
   wrongAnswerAnimationStart() {
+    Provider.of<BobData>(context, listen: false).changeAnimation('Wave');
     wrongAnswerAnimationController.forward();
-    if(wrongAnswerAngleAnimation.status == AnimationStatus.completed){
+    if (wrongAnswerAngleAnimation.status == AnimationStatus.completed) {
       wrongAnswerAnimationController.reverse();
     }
   }
@@ -62,16 +66,18 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
     animationController = AnimationController(
         duration: Duration(milliseconds: 1500), vsync: this);
 
-    wrongAnswerAnimationController =
-        AnimationController(duration: Duration(milliseconds: _wrongAnimationTime), vsync: this);
+    wrongAnswerAnimationController = AnimationController(
+        duration: Duration(milliseconds: _wrongAnimationTime), vsync: this);
 
-    final CurvedAnimation curve = CurvedAnimation(parent: wrongAnswerAnimationController, curve: Curves.easeOutCubic, reverseCurve: Curves.easeInCubic);
+    final CurvedAnimation curve = CurvedAnimation(
+        parent: wrongAnswerAnimationController,
+        curve: Curves.easeOutCubic,
+        reverseCurve: Curves.easeInCubic);
 
-    wrongAnswerAngleAnimation = Tween<double>(begin: 0 , end: 2)
-        .animate(curve)
-          ..addListener(() {
-            setState(() {});
-          });
+    wrongAnswerAngleAnimation = Tween<double>(begin: 0, end: 2).animate(curve)
+      ..addListener(() {
+        setState(() {});
+      });
 
     angleAnimation =
         Tween<double>(begin: -0.03, end: 0.03).animate(animationController)
@@ -108,8 +114,7 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
         child: Transform(
           transform: Matrix4.identity()
             ..setEntry(3, 2, 0.001)
-            ..rotateY(pi *
-                 wrongAnswerAngleAnimation.value),
+            ..rotateY(pi * wrongAnswerAngleAnimation.value),
           origin: Offset(_itemSize / 2, 0),
           child: Container(
             alignment: Alignment.center,

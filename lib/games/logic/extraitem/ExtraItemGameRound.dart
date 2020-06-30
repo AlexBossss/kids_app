@@ -11,18 +11,21 @@ class ExtraItemGameRound extends StatelessWidget {
       alignment: Alignment.center,
       child: Column(
         children: <Widget>[
-          Wrap(
-            children: _data
-                .map(
-                  (e) => Container(
-                    margin: EdgeInsets.all(10),
-                    height: 110,
-                    width: 110,
-                    child: e,
-                  ),
-                )
-                .toList(),
+          Container(
+            width: 300,
+            child: Wrap(
+              children: _data
+                  .map(
+                    (e) => Container(
+                      margin: EdgeInsets.all(10),
+                      height: 110,
+                      width: 110,
+                      child: e,
+                    ),
+                  )
+                  .toList(),
 
+            ),
           ),
         ],
       ),
