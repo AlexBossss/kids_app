@@ -49,8 +49,7 @@ class RoundGameModelState extends State<RoundGameModel> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+    return Container(
         child: Column(
           children: <Widget>[
             ValueListenableBuilder<double>(
@@ -99,7 +98,6 @@ class RoundGameModelState extends State<RoundGameModel> {
                 }),
           ],
         ),
-      ),
-    );
+      );
   }
 }

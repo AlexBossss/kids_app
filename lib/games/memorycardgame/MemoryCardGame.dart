@@ -83,6 +83,7 @@ class _MemoryGameState extends State<MemoryGame> {
   }
 
   void restart() {
+    startTimer();
     _data = getSourceArray(_level, _kind);
     _cardFlips = getInitialItemState(_level);
     _cardStateKeys = getCardStateKeys(_level);
@@ -93,6 +94,7 @@ class _MemoryGameState extends State<MemoryGame> {
     Future.delayed(const Duration(seconds: 5), () {
       setState(() {
         _start = true;
+        _timer.cancel();
       });
     });
   }
@@ -100,10 +102,14 @@ class _MemoryGameState extends State<MemoryGame> {
   @override
   void initState() {
     super.initState();
-    startTimer();
+
     restart();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return _isFinished

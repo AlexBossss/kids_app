@@ -9,15 +9,15 @@ class PlaceRightObjectGame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Right Way Game',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.green),
-      routes: <String, WidgetBuilder>{
-        Constants.SPLASH_SCREEN: (BuildContext context) => SplashScreen(),
-        Constants.HOME_SCREEN: (BuildContext context) => ChangeNotifierProvider(
-            builder: (context) => Data(), child: HomePage())
-      },
-      initialRoute: Constants.SPLASH_SCREEN,
+//      title: 'Right Way Game',
+//      debugShowCheckedModeBanner: false,
+//      theme: ThemeData(primarySwatch: Colors.green),
+//      routes: <String, WidgetBuilder>{
+//        Constants.SPLASH_SCREEN: (BuildContext context) => SplashScreen(),
+//        Constants.HOME_SCREEN: (BuildContext context) => ChangeNotifierProvider(
+//            builder: (context) => Data(), child: HomePage())
+//      },
+//      initialRoute: Constants.SPLASH_SCREEN,
     );
   }
 }

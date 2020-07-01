@@ -4,7 +4,6 @@ import 'package:kidsapp/models/ItemGame.dart';
 import 'package:kidsapp/src/theme/color/light_color.dart';
 
 class LogicList extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,13 +12,13 @@ class LogicList extends StatelessWidget {
         child: ListView(children: [
           GameItem(
               LightColor.itemGameBackground1,
-              'Find pair',
+              'Complete pic',
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
               '/completePictureGame'),
           GameItem(
               LightColor.itemGameBackground2,
-              'Find pair',
+              'Extra item',
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
               '/extraItemGame'),
@@ -29,6 +28,12 @@ class LogicList extends StatelessWidget {
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
               '/rightWayGame'),
+          GameItem(
+              LightColor.itemGameBackground3,
+              'Paint pic Game',
+              'Super game for clever guy and girls from 3 to 5 years',
+              'assets/memorygame/memoryGame.png',
+              '/paintPicGame'),
         ]),
       ),
     );
