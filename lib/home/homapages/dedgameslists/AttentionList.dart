@@ -19,7 +19,7 @@ class AttentionList extends StatelessWidget {
               '/findPairGame'),
           GameItem(
               LightColor.itemGameBackground2,
-              'Find pair',
+              'What suits',
               'Super game for clever guy and girls from 3 to 5 years',
               'assets/memorygame/memoryGame.png',
               '/whatSuits'),
