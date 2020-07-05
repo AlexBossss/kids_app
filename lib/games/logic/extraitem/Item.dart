@@ -4,7 +4,9 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidsapp/games/logic/extraitem/ExtraItemGame.dart';
+import 'package:kidsapp/games/logic/extraitem/lightbulbprogress/Garland.dart';
 import 'package:kidsapp/models/Bob.dart';
 import 'package:provider/provider.dart';
 
@@ -39,6 +41,7 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
 
   removeItem() {
     Provider.of<BobData>(context, listen: false).changeAnimation('Dance');
+    Provider.of<GarlandData>(context, listen: false).finishRound();
     if (isExtra == true) {
       setState(() {
         _itemSize = 110;
@@ -124,9 +127,8 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
                   duration: Duration(milliseconds: 1200),
                   width: _itemSize,
                   height: _itemSize,
-                  child: FlareActor(
-                    pic,
-                    animation: 'doAnimation',
+                  child: SvgPicture.asset(
+                    pic
                   )),
             ),
           ),

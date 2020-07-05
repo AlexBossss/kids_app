@@ -8,10 +8,10 @@ class ExtraItemGameRound extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
       child: Column(
         children: <Widget>[
           Container(
+            alignment: Alignment.center,
             width: 300,
             child: Wrap(
               children: _data

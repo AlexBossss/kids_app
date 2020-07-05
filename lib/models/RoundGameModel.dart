@@ -52,12 +52,12 @@ class RoundGameModelState extends State<RoundGameModel> {
     return Container(
         child: Column(
           children: <Widget>[
-            ValueListenableBuilder<double>(
-              valueListenable:_progress,
-              builder: (context, value, child) => LinearProgressIndicator(
-                value: _progress.value,
-              ),
-            ),
+//            ValueListenableBuilder<double>(
+//              valueListenable:_progress,
+//              builder: (context, value, child) => LinearProgressIndicator(
+//                value: _progress.value,
+//              ),
+//            ),
             ValueListenableBuilder(
                 valueListenable: _index,
                 builder: (context, value, child) {

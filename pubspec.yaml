@@ -54,9 +54,9 @@ flutter:
     - assets/memorygame/
     - assets/memorygame/sounds/
     - assets/whatsuitsicons/
-    - assets/shapedpics/square/
-    - assets/shapedpics/circle/
-    - assets/shapedpics/triangle/
+    - assets/extraitem/shapedpics/square/
+    - assets/extraitem/shapedpics/circle/
+    - assets/extraitem/shapedpics/triangle/
     - assets/extraitem/
     - assets/
   #   - images/a_dot_ham.jpeg

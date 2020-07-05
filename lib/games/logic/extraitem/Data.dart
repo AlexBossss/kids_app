@@ -1,23 +1,22 @@
 import 'Item.dart';
 
 List<String> square = [
-  'assets/shapedpics/square/squareLetter.flr',
-  'assets/shapedpics/square/squareNote.flr',
-  'assets/shapedpics/square/squareTV.flr',
-  'assets/shapedpics/square/squareWasher.flr',
-  'assets/shapedpics/square/squareWindow.flr',
+  'assets/extraitem/shapedpics/square/squareChocolate.svg',
+  'assets/extraitem/shapedpics/square/squareJuice.svg',
+  'assets/extraitem/shapedpics/square/squareMilk.svg',
+  'assets/extraitem/shapedpics/square/squarePan.svg',
 ];
 
 List<String> circle = [
-  'assets/shapedpics/circle/circleBallon.flr',
-  'assets/shapedpics/circle/circleBowling.flr',
-  'assets/shapedpics/circle/circleNewYearBall.flr',
+  'assets/extraitem/shapedpics/circle/circleOrange.svg',
+  'assets/extraitem/shapedpics/circle/circlePizza.svg',
+  'assets/extraitem/shapedpics/circle/circleTomato.svg',
 ];
 
 List<String> triangle = [
-  'assets/shapedpics/triangle/triangleCheese.flr',
-  'assets/shapedpics/triangle/triangleHause.flr',
-  'assets/shapedpics/triangle/triangleWatermelon.flr',
+  'assets/extraitem/shapedpics/triangle/triangleCheese.svg',
+  'assets/extraitem/shapedpics/triangle/triangleIcecream.svg',
+  'assets/extraitem/shapedpics/triangle/triangleWatermelon.svg',
 ];
 
 List<List<String>> figures = [triangle, square, circle];
