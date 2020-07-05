@@ -19,8 +19,21 @@ class ExtraItemGameState extends State<ExtraItemGame> {
 
   static RoundGameModel roundGameModel;
 
+  bool isGameStart = false;
+
+  void startGame() {
+    Future.delayed(
+        Duration(milliseconds: 2000),
+        () => {
+              setState(() {
+                isGameStart = true;
+              })
+            });
+  }
+
   @override
   void initState() {
+    
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -33,6 +46,7 @@ class ExtraItemGameState extends State<ExtraItemGame> {
       ExtraItemGameRound(),
     ];
     roundGameModel = RoundGameModel(_rounds);
+    startGame();
     super.initState();
   }
 
@@ -48,21 +62,25 @@ class ExtraItemGameState extends State<ExtraItemGame> {
           child: Stack(
             children: <Widget>[
               Container(
-               width: MediaQuery.of(context).size.width,
-                height:MediaQuery.of(context).size.height,
-                child: SvgPicture.asset('assets/extraitem/fridge_back.svg',fit: BoxFit.cover,),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: SvgPicture.asset(
+                  'assets/extraitem/fridge_back.svg',
+                  fit: BoxFit.cover,
+                ),
               ),
               Positioned(
                 top: 50,
-                child: Container(
+                child: isGameStart? Container(
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.center,
                   child: Container(
                     width: MediaQuery.of(context).size.width / 1.15,
                     height: MediaQuery.of(context).size.height / 1.9,
-                    child: SvgPicture.asset('assets/extraitem/cloud.svg', fit: BoxFit.fill),
+                    child: SvgPicture.asset('assets/extraitem/cloud.svg',
+                        fit: BoxFit.fill),
                   ),
-                ),
+                ) : Container(),
               ),
               Container(
                 child: Garland(),
@@ -71,7 +89,7 @@ class ExtraItemGameState extends State<ExtraItemGame> {
                 top: MediaQuery.of(context).size.height / 6.5,
                 width: MediaQuery.of(context).size.width,
                 child: Container(
-                  child: roundGameModel,
+                  child: isGameStart? roundGameModel : Container(),
                 ),
               ),
               Positioned(
