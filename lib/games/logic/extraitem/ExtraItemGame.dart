@@ -1,10 +1,10 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidsapp/games/logic/extraitem/ExtraItemGameRound.dart';
-import 'package:kidsapp/games/logic/extraitem/lightbulbprogress/Garland.dart';
-import 'package:kidsapp/games/logic/extraitem/lightbulbprogress/LightBulb.dart';
+import 'package:kidsapp/games/logic/extraitem/lightbulbprogress/ProgressBarStar.dart';
 import 'package:kidsapp/models/Bob.dart';
 import 'package:kidsapp/models/RoundGameModel.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +33,6 @@ class ExtraItemGameState extends State<ExtraItemGame> {
 
   @override
   void initState() {
-    
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -52,15 +51,15 @@ class ExtraItemGameState extends State<ExtraItemGame> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<BobData>(create: (context) => BobData()),
-        ChangeNotifierProvider<GarlandData>(create: (context) => GarlandData()),
-      ],
-      child: Scaffold(
+
+   bool isGameFished = Provider.of<ProgressBarStarData>(context).isGameFinished();
+
+    return
+      Scaffold(
         body: Container(
           child: Stack(
             children: <Widget>[
+
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
@@ -83,7 +82,7 @@ class ExtraItemGameState extends State<ExtraItemGame> {
                 ) : Container(),
               ),
               Container(
-                child: Garland(),
+                child: ProgressBarStar(),
               ),
               Positioned(
                 top: MediaQuery.of(context).size.height / 6.5,
@@ -98,10 +97,14 @@ class ExtraItemGameState extends State<ExtraItemGame> {
                 height: MediaQuery.of(context).size.height / 1.7,
                 child: Bob(),
               ),
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  child:  isGameFished ? FlareActor('assets/extraitem/BalloonsAnimation.flr',animation: 'goUP',): Container()
+              ),
             ],
           ),
         ),
-      ),
     );
   }
 }
