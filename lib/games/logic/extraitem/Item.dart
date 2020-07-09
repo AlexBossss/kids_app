@@ -13,7 +13,6 @@ class Item extends StatefulWidget {
   Item(this.pic, {this.isExtra});
 
   final String pic;
-
   final bool isExtra;
 
   @override
@@ -37,9 +36,11 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
   String pic;
   double _itemSize;
   bool isExtra;
+  bool isDone = false;
 
   removeItem() {
 
+      isDone = true;
     Provider.of<BobData>(context, listen: false).changeAnimation('Dance');
     Provider.of<ProgressBarStarData>(context, listen: false).finishRound();
     if (isExtra == true) {
@@ -53,7 +54,7 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
         ExtraItemGameState.roundGameModel.nextRound();
       });
     }
-    isExtra = false;
+
   }
 
   wrongAnswerAnimationStart() {
@@ -114,7 +115,8 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
       height: _itemSize,
       width: _itemSize,
       child: GestureDetector(
-        onTap: () => isExtra ? removeItem() : wrongAnswerAnimationStart(),
+        onTap: () =>
+            (isExtra) ? !isDone?removeItem(): null : wrongAnswerAnimationStart(),
         child: Transform(
           transform: Matrix4.identity()
             ..setEntry(3, 2, 0.001)
@@ -128,9 +130,7 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
                   duration: Duration(milliseconds: 1200),
                   width: _itemSize,
                   height: _itemSize,
-                  child: SvgPicture.asset(
-                    pic
-                  )),
+                  child: SvgPicture.asset(pic)),
             ),
           ),
         ),

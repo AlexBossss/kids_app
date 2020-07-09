@@ -24,7 +24,6 @@ class ExtraItemGameRound extends StatelessWidget {
                     ),
                   )
                   .toList(),
-
             ),
           ),
         ],
