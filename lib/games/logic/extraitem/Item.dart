@@ -1,10 +1,11 @@
 import 'dart:math';
 
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidsapp/games/logic/extraitem/ExtraItemGame.dart';
+import 'package:kidsapp/games/logic/extraitem/lightbulbprogress/ProgressBarStar.dart';
 import 'package:kidsapp/models/Bob.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +13,6 @@ class Item extends StatefulWidget {
   Item(this.pic, {this.isExtra});
 
   final String pic;
-
   final bool isExtra;
 
   @override
@@ -36,9 +36,12 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
   String pic;
   double _itemSize;
   bool isExtra;
+  bool isDone = false;
 
   removeItem() {
+    isDone = true;
     Provider.of<BobData>(context, listen: false).changeAnimation('Dance');
+    Provider.of<ProgressBarStarData>(context, listen: false).finishRound();
     if (isExtra == true) {
       setState(() {
         _itemSize = 110;
@@ -110,7 +113,9 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
       height: _itemSize,
       width: _itemSize,
       child: GestureDetector(
-        onTap: () => isExtra ? removeItem() : wrongAnswerAnimationStart(),
+        onTap: () => (isExtra)
+            ? !isDone ? removeItem() : null
+            : wrongAnswerAnimationStart(),
         child: Transform(
           transform: Matrix4.identity()
             ..setEntry(3, 2, 0.001)
@@ -124,10 +129,7 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
                   duration: Duration(milliseconds: 1200),
                   width: _itemSize,
                   height: _itemSize,
-                  child: FlareActor(
-                    pic,
-                    animation: 'doAnimation',
-                  )),
+                  child: SvgPicture.asset(pic)),
             ),
           ),
         ),

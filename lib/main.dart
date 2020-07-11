@@ -9,10 +9,14 @@ import 'package:kidsapp/games/rememberoneitem/RememberOneItem.dart';
 import 'package:kidsapp/games/whereiam/WhereIAmGame.dart';
 
 import 'package:kidsapp/home/HomeScreen.dart';
+import 'package:provider/provider.dart';
 import 'games/attentiongames/findpair/FindPairGame.dart';
 import 'games/attentiongames/whatsuits/WhatSuitsGame.dart';
+import 'games/logic/extraitem/lightbulbprogress/ProgressBarStar.dart';
 import 'games/memorycardgame/MemoryCardGameMenu.dart';
 import 'package:kidsapp/src/theme/theme.dart';
+
+import 'models/Bob.dart';
 
 //super app next 1
 void main() => runApp(MyApp());
@@ -22,7 +26,12 @@ class MyApp extends StatelessWidget {
   // This widget is the of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiProvider(
+        providers: [
+        ChangeNotifierProvider<BobData>(create: (context) => BobData()),
+    ChangeNotifierProvider<ProgressBarStarData>(create: (context) => ProgressBarStarData()),
+    ],
+     child: MaterialApp(
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
@@ -40,6 +49,7 @@ class MyApp extends StatelessWidget {
           '/paintPicGame' : (BuildContext context) => PaintPicGame(),
           '/rightWayGame' : (BuildContext context) => PlaceRightObjectGame(),
         },
+      )
     );
   }
 }
