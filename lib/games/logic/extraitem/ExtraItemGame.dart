@@ -33,6 +33,7 @@ class ExtraItemGameState extends State<ExtraItemGame> {
 
   @override
   void initState() {
+    Provider.of<ProgressBarStarData>(context, listen: false).restart();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);

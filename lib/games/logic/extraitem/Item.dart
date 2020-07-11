@@ -39,8 +39,7 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
   bool isDone = false;
 
   removeItem() {
-
-      isDone = true;
+    isDone = true;
     Provider.of<BobData>(context, listen: false).changeAnimation('Dance');
     Provider.of<ProgressBarStarData>(context, listen: false).finishRound();
     if (isExtra == true) {
@@ -54,7 +53,6 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
         ExtraItemGameState.roundGameModel.nextRound();
       });
     }
-
   }
 
   wrongAnswerAnimationStart() {
@@ -115,8 +113,9 @@ class _ItemState extends State<Item> with TickerProviderStateMixin {
       height: _itemSize,
       width: _itemSize,
       child: GestureDetector(
-        onTap: () =>
-            (isExtra) ? !isDone?removeItem(): null : wrongAnswerAnimationStart(),
+        onTap: () => (isExtra)
+            ? !isDone ? removeItem() : null
+            : wrongAnswerAnimationStart(),
         child: Transform(
           transform: Matrix4.identity()
             ..setEntry(3, 2, 0.001)
