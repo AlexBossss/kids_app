@@ -291,24 +291,12 @@ class _MenuState extends State<MemoryCardGameMenu> {
                     _level = checkLevel();
                     _kind = checkKind();
                     Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                            transitionDuration: Duration(seconds: 1),
-                            transitionsBuilder: (BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secAnimation,
-                                Widget child) {
-                              return ScaleTransition(
-                                alignment: Alignment.center,
-                                scale: animation,
-                                child: child,
-                              );
-                            },
-                            pageBuilder: (BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secAnimation) {
-                              return MemoryGame(_level, _kind);
-                            }));
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            MemoryGame(_level, _kind),
+                      ),
+                    );
                   }),
             ],
           ),
