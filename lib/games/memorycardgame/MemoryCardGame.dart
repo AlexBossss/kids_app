@@ -4,6 +4,8 @@ import 'package:audioplayers/audio_cache.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kidsapp/models/Data/AudioData.dart';
+import 'package:provider/provider.dart';
 
 import 'Data.dart';
 import 'MemoryCardEnums.dart';
@@ -21,7 +23,7 @@ class MemoryGame extends StatefulWidget {
 class _MemoryGameState extends State<MemoryGame> {
   _MemoryGameState(this._level, this._kind);
 
-  AudioCache _audioController = AudioCache();
+
 
   int _previousIndex = -1;
   bool _flip = false;
@@ -91,7 +93,7 @@ class _MemoryGameState extends State<MemoryGame> {
     _left = (_data.length ~/ 2);
 
     _isFinished = false;
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 6), () {
       setState(() {
         _start = true;
         _timer.cancel();
@@ -186,8 +188,7 @@ class _MemoryGameState extends State<MemoryGame> {
                                         Future.delayed(
                                             const Duration(milliseconds: 1500),
                                             () {
-                                          _audioController.play(
-                                              'memorygame/sounds/fail.mp3');
+                                              Provider.of<AudioData>(context,listen: false).playWrong();
                                           _cardStateKeys[_previousIndex]
                                               .currentState
                                               .toggleCard();
@@ -208,8 +209,7 @@ class _MemoryGameState extends State<MemoryGame> {
                                         _cardFlips[_previousIndex] = false;
                                         _cardFlips[index] = false;
                                         print(_cardFlips);
-                                        _audioController.play(
-                                            'memorygame/sounds/success.mp3');
+                                        Provider.of<AudioData>(context, listen: false).playRight();
                                         setState(() {
                                           _left -= 1;
                                         });

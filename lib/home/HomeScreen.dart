@@ -1,11 +1,11 @@
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kidsapp/home/homapages/DeductiveGamePage.dart';
 import 'package:kidsapp/home/homapages/LessonPage.dart';
+import 'package:kidsapp/models/Data/AudioData.dart';
 import 'package:kidsapp/src/theme/color/light_color.dart';
 import 'package:ocarina/ocarina.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,7 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeState extends State<HomeScreen> {
-  AudioCache _audioCache = AudioCache();
   final _homePages = [
     DeductiveGamePage(),
     LessonPage(),
@@ -22,21 +21,19 @@ class HomeState extends State<HomeScreen> {
   static bool active = true;
   static bool disable = false;
 
-  OcarinaPlayer player = OcarinaPlayer(loop: true, asset: 'assets/kids.mp3');
 
-  void startPlayer() async {
-    await player.load();
-    player.play();
-  }
+
+
 
   @override
   void initState() {
-    startPlayer();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(

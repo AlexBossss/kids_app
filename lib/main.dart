@@ -17,6 +17,7 @@ import 'games/memorycardgame/MemoryCardGameMenu.dart';
 import 'package:kidsapp/src/theme/theme.dart';
 
 import 'models/Bob.dart';
+import 'models/Data/AudioData.dart';
 
 //super app next 1
 void main() => runApp(MyApp());
@@ -28,28 +29,30 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-        ChangeNotifierProvider<BobData>(create: (context) => BobData()),
-    ChangeNotifierProvider<ProgressBarStarData>(create: (context) => ProgressBarStarData()),
-    ],
-     child: MaterialApp(
-        theme: AppTheme.lightTheme,
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        routes: {
-          '/': (BuildContext context) => HomeScreen(),
-          '/memoryCardGame': (BuildContext context) => MemoryCardGameMenu(),
-          '/rememberCard': (BuildContext context) => RememberCard(),
-          '/rememberOrder': (BuildContext context) => RememberOrder(),
-          '/rememberOneItem': (BuildContext context) => RememberOneItem(),
-          '/whereIAmGame': (BuildContext context) => WhereIAmGame(),
-          '/findPairGame': (BuildContext context) => FindPairGame(),
-          '/completePictureGame': (BuildContext context) => CompletePictureGame(),
-          '/extraItemGame': (BuildContext context) => ExtraItemGame(),
-          '/whatSuits' : (BuildContext context) => WhatSuitsGame(),
-          '/paintPicGame' : (BuildContext context) => PaintPicGame(),
-          '/rightWayGame' : (BuildContext context) => PlaceRightObjectGame(),
-        },
-      )
-    );
+          ChangeNotifierProvider<BobData>(create: (context) => BobData()),
+          ChangeNotifierProvider<AudioData>(create: (context) => AudioData()),
+          ChangeNotifierProvider<ProgressBarStarData>(
+              create: (context) => ProgressBarStarData()),
+        ],
+        child: MaterialApp(
+          theme: AppTheme.lightTheme,
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/',
+          routes: {
+            '/': (BuildContext context) => HomeScreen(),
+            '/memoryCardGame': (BuildContext context) => MemoryCardGameMenu(),
+            '/rememberCard': (BuildContext context) => RememberCard(),
+            '/rememberOrder': (BuildContext context) => RememberOrder(),
+            '/rememberOneItem': (BuildContext context) => RememberOneItem(),
+            '/whereIAmGame': (BuildContext context) => WhereIAmGame(),
+            '/findPairGame': (BuildContext context) => FindPairGame(),
+            '/completePictureGame': (BuildContext context) =>
+                CompletePictureGame(),
+            '/extraItemGame': (BuildContext context) => ExtraItemGame(),
+            '/whatSuits': (BuildContext context) => WhatSuitsGame(),
+            '/paintPicGame': (BuildContext context) => PaintPicGame(),
+            '/rightWayGame': (BuildContext context) => PlaceRightObjectGame(),
+          },
+        ));
   }
 }
