@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kidsapp/home/homapages/DeductiveGamePage.dart';
 import 'package:kidsapp/home/homapages/LessonPage.dart';
+import 'package:kidsapp/models/Data/AudioData.dart';
 import 'package:kidsapp/src/theme/color/light_color.dart';
+import 'package:ocarina/ocarina.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -18,8 +21,19 @@ class HomeState extends State<HomeScreen> {
   static bool active = true;
   static bool disable = false;
 
+
+
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
