@@ -4,7 +4,6 @@ import 'package:kidsapp/games/logic/extraitem/ExtraItemGame.dart';
 import 'package:kidsapp/games/logic/paintpicgame/PaintPicGame.dart';
 import 'package:kidsapp/games/logic/rightway/PlaceRightObjectGame.dart';
 import 'package:kidsapp/games/remembercardgame/RememberCard.dart';
-import 'package:kidsapp/games/rememberorder/RememberOrder.dart';
 import 'package:kidsapp/games/rememberoneitem/RememberOneItem.dart';
 import 'package:kidsapp/games/whereiam/WhereIAmGame.dart';
 
@@ -13,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'games/attentiongames/findpair/FindPairGame.dart';
 import 'games/attentiongames/whatsuits/WhatSuitsGame.dart';
 import 'games/logic/extraitem/lightbulbprogress/ProgressBarStar.dart';
+import 'games/memory/rememberorder/RememberOrder.dart';
 import 'games/memorycardgame/MemoryCardGameMenu.dart';
 import 'package:kidsapp/src/theme/theme.dart';
 

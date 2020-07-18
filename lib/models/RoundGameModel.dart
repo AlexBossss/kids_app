@@ -38,18 +38,21 @@ class RoundGameModelState extends State<RoundGameModel> {
     _restart();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
+      alignment: Alignment.center,
+      child: Stack(
         children: <Widget>[
           ValueListenableBuilder(
               valueListenable: _index,
               builder: (context, value, child) {
                 return (_index.value == rounds.length)
-                    ? Padding(
-                        padding: const EdgeInsets.only(top: 100.0),
+                    ? Container(
+                        height: 300,
                         child: Container(
+                          alignment: Alignment.center,
                           child: GestureDetector(
                             onTap: () {
                               setState(() {
@@ -85,4 +88,3 @@ class RoundGameModelState extends State<RoundGameModel> {
     );
   }
 }
-
