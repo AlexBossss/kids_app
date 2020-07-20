@@ -53,6 +53,7 @@ flutter:
   assets:
     - assets/animalspics/
     - assets/memorygame/
+    - assets/memorygame/whichismyfloor/
     - assets/memorygame/sounds/
     - assets/whatsuitsicons/
     - assets/extraitem/shapedpics/square/

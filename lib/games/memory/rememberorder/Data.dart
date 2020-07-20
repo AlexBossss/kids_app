@@ -1,4 +1,3 @@
-
 import 'RememberOrderRound.dart';
 
 List<String> animals = [
@@ -30,10 +29,22 @@ class OrderItem {
 }
 
 var rounds = [
-  RememberOrderRound(orderLength: 2,),
-  RememberOrderRound(orderLength: 2,),
-  RememberOrderRound(orderLength: 3,),
-  RememberOrderRound(orderLength: 3,),
-  RememberOrderRound(orderLength: 4,),
-  RememberOrderRound(orderLength: 4,),
+  RememberOrderRound(
+    orderLength: 2,
+  ),
+  RememberOrderRound(
+    orderLength: 2,
+  ),
+  RememberOrderRound(
+    orderLength: 3,
+  ),
+  RememberOrderRound(
+    orderLength: 3,
+  ),
+  RememberOrderRound(
+    orderLength: 4,
+  ),
+  RememberOrderRound(
+    orderLength: 4,
+  ),
 ];
