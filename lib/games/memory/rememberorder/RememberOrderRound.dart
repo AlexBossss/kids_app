@@ -28,9 +28,9 @@ class _RememberOrderRoundState extends State<RememberOrderRound> {
   double _startButtonHeight = 50;
   Color _windowColor = Colors.yellow[100];
   double _floorHeight = 0.18;
-  double _groundHeight = 0.03;
+  double _groundHeight = 0.05;
   double _roofHeight = 0.085;
-  double _bottomPadding = 120;
+  double _bottomPadding = 110;
 
   _RememberOrderRoundState(this._orderLength);
 
@@ -284,9 +284,19 @@ class _RememberOrderRoundState extends State<RememberOrderRound> {
                         duration: _isActionAnimationDuration,
                         height: _startButtonHeight,
                         width: 150,
-                        child: Text('Go'),
-                        color: Colors.lightBlueAccent,
-                        alignment: Alignment.center,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(width: 3),
+                            color: Colors.lightBlueAccent,
+                              borderRadius: BorderRadius.circular(24)
+                          ),
+                          alignment: Alignment.center,
+                          child: Text('Go',style:  TextStyle(
+                              color: Colors.black,
+                              fontSize: 36,
+                              fontWeight: FontWeight.w500),),
+                        ),
+
                       ),
                       onTap: () {
                         startRound();
