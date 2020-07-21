@@ -5,7 +5,7 @@ import 'package:kidsapp/games/logic/paintpicgame/PaintPicGame.dart';
 import 'package:kidsapp/games/logic/rightway/PlaceRightObjectGame.dart';
 import 'package:kidsapp/games/remembercardgame/RememberCard.dart';
 import 'package:kidsapp/games/rememberoneitem/RememberOneItem.dart';
-import 'package:kidsapp/games/whereiam/WhereIAmGame.dart';
+import 'package:kidsapp/games/memory/whereiam/WhereIAmGame.dart';
 
 import 'package:kidsapp/home/HomeScreen.dart';
 import 'package:provider/provider.dart';
