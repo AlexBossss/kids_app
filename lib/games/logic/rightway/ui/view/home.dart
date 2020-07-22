@@ -16,9 +16,9 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          Provider.of<Data>(context).initializeDraggableList();
-          Provider.of<Data>(context).changeSuccessDrop(false);
-          Provider.of<Data>(context).changeSuccessDropTwo(false);
+          Provider.of<Data>(context, listen: false).initializeDraggableList();
+          Provider.of<Data>(context, listen: false).changeSuccessDrop(false);
+          Provider.of<Data>(context, listen: false).changeSuccessDropTwo(false);
         },
         elevation: 20.0,
         label: Text('Reset'),

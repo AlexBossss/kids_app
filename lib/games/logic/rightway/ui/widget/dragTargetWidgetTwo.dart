@@ -14,9 +14,9 @@ class DragTargetWidgetTwo extends StatelessWidget {
       return true;
     }, onAccept: (CardItem data) {
       if (data.cardColor == BLUE_COLOR) {
-        Provider.of<Data>(context).removeLastItem();
-        Provider.of<Data>(context).changeSuccessDropTwo(true);
-        Provider.of<Data>(context).changeAcceptedDataTwo(data);
+        Provider.of<Data>(context, listen: false).removeLastItem();
+        Provider.of<Data>(context, listen: false).changeSuccessDropTwo(true);
+        Provider.of<Data>(context, listen: false).changeAcceptedDataTwo(data);
       }
     }, builder: (context, List<CardItem> cd, rd) {
       if (Provider.of<Data>(context).isSuccessDropTwo) {

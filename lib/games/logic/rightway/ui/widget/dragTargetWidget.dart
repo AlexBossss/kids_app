@@ -14,9 +14,9 @@ class DragTargetWidget extends StatelessWidget {
       return true;
     }, onAccept: (CardItem data) {
       if (data.cardColor == RED_COLOR) {
-        Provider.of<Data>(context).removeLastItem();
-        Provider.of<Data>(context).changeSuccessDrop(true);
-        Provider.of<Data>(context).changeAcceptedData(data);
+        Provider.of<Data>(context, listen: false).removeLastItem();
+        Provider.of<Data>(context, listen: false).changeSuccessDrop(true);
+        Provider.of<Data>(context, listen: false).changeAcceptedData(data);
         // scaffoldKey.currentState.showSnackBar(SnackBar(content: Text("Correct!")));
       }
     }, builder: (context, List<CardItem> cd, rd) {
