@@ -17,7 +17,7 @@ List<String> animals = [
   'assets/animalspics/zoo.png'
 ];
 
-String missing = 'assets/animalspics/question.png';
+String missing = 'assets/memorygame/wheredoilive/door.svg';
 String correct = 'assets/animalspics/correct.png';
 
 
@@ -36,10 +36,4 @@ List getData() {
   return animals.sublist(0,amount);
 }
 
-List <WhereIAmGameRound> whereIAmRounds = [
-  WhereIAmGameRound(),
-  WhereIAmGameRound(),
-  WhereIAmGameRound(),
-  WhereIAmGameRound(),
-  WhereIAmGameRound(),
-];
+
