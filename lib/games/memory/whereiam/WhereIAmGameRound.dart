@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidsapp/games/memory/whereiam/Data.dart';
 import 'package:kidsapp/games/memory/whereiam/WhereIAmGame.dart';
+import 'package:kidsapp/models/lightbulbprogress/ProgressBarStar.dart';
+import 'package:provider/provider.dart';
 
 class WhereIAmGameRound extends StatefulWidget {
   @override
@@ -30,9 +32,6 @@ class _WhereIAmGameRoundState extends State<WhereIAmGameRound> {
   GlobalKey<FlipCardState> searchItem = GlobalKey<FlipCardState>();
 
   void checkAnswer(int index) {
-    print(_data[index]);
-    print(_data[_random]);
-    print(_cardStateKeys);
     if (_data[index] != _data[_random] && _isAction) {
       _cardStateKeys[index].currentState.toggleCard();
       Future.delayed(Duration(milliseconds: 900), () {
@@ -43,17 +42,24 @@ class _WhereIAmGameRoundState extends State<WhereIAmGameRound> {
       _isAction = false;
       Future.delayed(Duration(milliseconds: 900), () {
         searchItem.currentState.toggleCard();
+        Provider.of<ProgressBarStarData>(context, listen: false).finishRound();
         WhereIAmGameState().nextRound();
       });
     }
   }
 
   startRound() {
-    setState(() {
-      _buttonHeight = 0;
-      _animatedWidth = MediaQuery.of(context).size.height * _searchItemHeight;
-    });
-    flipCards();
+    if(!_isAction) {
+      setState(() {
+        _buttonHeight = 0;
+        _animatedWidth = MediaQuery
+            .of(context)
+            .size
+            .height * _searchItemHeight;
+      });
+      flipCards();
+      _isAction = true;
+    }
   }
 
   @override
@@ -69,7 +75,6 @@ class _WhereIAmGameRoundState extends State<WhereIAmGameRound> {
     _data = getData();
     _random = Random().nextInt(_data.length);
     _cardStateKeys = getKeys();
-    print(_random);
     super.initState();
   }
 
@@ -77,7 +82,6 @@ class _WhereIAmGameRoundState extends State<WhereIAmGameRound> {
     _data.forEach((element) {
       _cardStateKeys[_data.indexOf(element)].currentState.toggleCard();
     });
-    _isAction = true;
   }
 
   Widget getHillHouse(int index) {

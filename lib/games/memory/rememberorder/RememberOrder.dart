@@ -1,6 +1,7 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kidsapp/games/memory/rememberorder/RememberOrderRound.dart';
 import 'package:kidsapp/models/RoundGameModel.dart';
 
@@ -36,6 +37,9 @@ class RememberOrderState extends State<RememberOrder> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
   }
 
   @override

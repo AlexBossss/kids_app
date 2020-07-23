@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kidsapp/games/logic/extraitem/lightbulbprogress/Star.dart';
 import 'package:provider/provider.dart';
+
+import 'Star.dart';
 
 class ProgressBarStar extends StatelessWidget {
 
@@ -75,7 +76,7 @@ class ProgressBarStarData extends ChangeNotifier{
 
  List get getRoundState => _rounds;
 
- void restart(){
+ void start(){
    _currentRound = 0;
     _rounds = [
      false,
@@ -85,13 +86,13 @@ class ProgressBarStarData extends ChangeNotifier{
      false,
      false,
    ];
-    notifyListeners();
  }
 
  bool isGameFinished(){
    if (_rounds.every((element) => element == true)){
      Future.delayed(Duration(milliseconds: 4000), () {
-       restart();
+       start();
+       notifyListeners();
      });
      return true;
    } else  {

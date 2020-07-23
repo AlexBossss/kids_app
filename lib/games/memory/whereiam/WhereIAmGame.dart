@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidsapp/models/RoundGameModel.dart';
 
@@ -18,12 +19,16 @@ class WhereIAmGameState extends State<WhereIAmGame> {
     WhereIAmGameRound(),
     WhereIAmGameRound(),
     WhereIAmGameRound(),
+    WhereIAmGameRound(),
   ];
-  RoundGameModel _whereDoILiveRounds = RoundGameModel(_data);
+  RoundGameModel _whereDoILiveRounds = RoundGameModel(_data,);
 
   @override
   void initState() {
     super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
   }
   @override
   Widget build(BuildContext context) {

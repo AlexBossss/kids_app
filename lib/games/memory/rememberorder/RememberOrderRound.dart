@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kidsapp/games/memory/rememberorder/Data.dart';
+import 'package:kidsapp/models/lightbulbprogress/ProgressBarStar.dart';
+import 'package:provider/provider.dart';
 
 import 'Data.dart';
 import 'RememberOrder.dart';
@@ -188,7 +190,9 @@ class _RememberOrderRoundState extends State<RememberOrderRound> {
                       _score[e] = true;
                     });
                     if (_score.length == _data.length) {
+                      Provider.of<ProgressBarStarData>(context, listen: false).finishRound();
                       RememberOrderState().nextRound();
+
                     }
                   }),
             )),

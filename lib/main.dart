@@ -11,13 +11,13 @@ import 'package:kidsapp/home/HomeScreen.dart';
 import 'package:provider/provider.dart';
 import 'games/attentiongames/findpair/FindPairGame.dart';
 import 'games/attentiongames/whatsuits/WhatSuitsGame.dart';
-import 'games/logic/extraitem/lightbulbprogress/ProgressBarStar.dart';
 import 'games/memory/rememberorder/RememberOrder.dart';
 import 'games/memorycardgame/MemoryCardGameMenu.dart';
 import 'package:kidsapp/src/theme/theme.dart';
 
 import 'models/Bob.dart';
 import 'models/Data/AudioData.dart';
+import 'models/lightbulbprogress/ProgressBarStar.dart';
 
 //super app next 1
 void main() => runApp(MyApp());
