@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidsapp/games/logic/extraitem/ExtraItemGame.dart';
-import 'package:kidsapp/games/logic/extraitem/lightbulbprogress/ProgressBarStar.dart';
 import 'package:kidsapp/models/Bob.dart';
+import 'package:kidsapp/models/lightbulbprogress/ProgressBarStar.dart';
 import 'package:provider/provider.dart';
 
 class Item extends StatefulWidget {

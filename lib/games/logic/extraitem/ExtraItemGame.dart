@@ -1,13 +1,10 @@
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kidsapp/games/logic/extraitem/ExtraItemGameRound.dart';
-import 'package:kidsapp/games/logic/extraitem/lightbulbprogress/ProgressBarStar.dart';
 import 'package:kidsapp/models/Bob.dart';
 import 'package:kidsapp/models/RoundGameModel.dart';
-import 'package:provider/provider.dart';
 
 class ExtraItemGame extends StatefulWidget {
   @override
@@ -33,7 +30,7 @@ class ExtraItemGameState extends State<ExtraItemGame> {
 
   @override
   void initState() {
-    Provider.of<ProgressBarStarData>(context, listen: false).restart();
+
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -52,8 +49,7 @@ class ExtraItemGameState extends State<ExtraItemGame> {
 
   @override
   Widget build(BuildContext context) {
-    bool isGameFished =
-        Provider.of<ProgressBarStarData>(context).isGameFinished();
+
 
     return Scaffold(
       body: Container(
@@ -82,11 +78,8 @@ class ExtraItemGameState extends State<ExtraItemGame> {
                     )
                   : Container(),
             ),
-            Container(
-              child: ProgressBarStar(),
-            ),
             Positioned(
-              top: MediaQuery.of(context).size.height / 6.5,
+
               width: MediaQuery.of(context).size.width,
               child: Container(
                 child: isGameStart ? roundGameModel : Container(),
@@ -98,15 +91,6 @@ class ExtraItemGameState extends State<ExtraItemGame> {
               height: MediaQuery.of(context).size.height / 1.7,
               child: Bob(),
             ),
-            Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: isGameFished
-                    ? FlareActor(
-                        'assets/extraitem/BalloonsAnimation.flr',
-                        animation: 'goUP',
-                      )
-                    : Container()),
           ],
         ),
       ),
