@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kidsapp/models/Data/FlareData.dart';
 import 'package:kidsapp/models/RoundGameModel.dart';
 
 import 'WhereIAmGameRound.dart';
-
 
 class WhereIAmGame extends StatefulWidget {
   @override
@@ -13,7 +12,9 @@ class WhereIAmGame extends StatefulWidget {
 }
 
 class WhereIAmGameState extends State<WhereIAmGame> {
- static List <WhereIAmGameRound> _data = [
+  bool _isStart;
+  bool _isVisible;
+  static List<WhereIAmGameRound> _data = [
     WhereIAmGameRound(),
     WhereIAmGameRound(),
     WhereIAmGameRound(),
@@ -21,32 +22,46 @@ class WhereIAmGameState extends State<WhereIAmGame> {
     WhereIAmGameRound(),
     WhereIAmGameRound(),
   ];
-  RoundGameModel _whereDoILiveRounds = RoundGameModel(_data,);
+  RoundGameModel _whereDoILiveRounds = RoundGameModel(
+    _data,
+  );
 
   @override
   void initState() {
+    _isVisible = false;
+    _isStart = false;
     super.initState();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
-  }
-  @override
-  Widget build(BuildContext context) {
-    return  Scaffold(
-      body: Stack(children: [
-        Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: SvgPicture.asset(
-              'assets/memorygame/wheredoilive/background-wheredoilive.svg',
-              fit: BoxFit.cover,
-            )),
-        _whereDoILiveRounds,
-      ]),
-    );
+    Future.delayed(
+        Duration(milliseconds: 2500),
+        () => {
+              setState(() => _isStart = true),
+              Future.delayed(Duration(milliseconds: 10),
+                  () => setState(() => _isVisible = true))
+            });
   }
 
- void nextRound() {
-   _whereDoILiveRounds.nextRound();
+  @override
+  Widget build(BuildContext context) {
+    return _isStart
+        ? Scaffold(
+            body: Stack(children: [
+              Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  child: FlareData().whereDoILive),
+              AnimatedOpacity(
+                  duration: Duration(milliseconds: 500),
+                  opacity: _isVisible ? 1.0 : 0.0,
+                  child: _whereDoILiveRounds),
+            ]),
+          )
+        : FlareData().whereDoILiveStart;
+  }
+
+  void nextRound() {
+    _whereDoILiveRounds.nextRound();
   }
 }
