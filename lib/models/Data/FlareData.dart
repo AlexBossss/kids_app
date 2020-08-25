@@ -31,4 +31,16 @@ class FlareData{
     animation: 'Start',
     fit: BoxFit.cover,
   );
+
+  Widget completePicStart  = FlareActor(
+    'assets/logic/completepic/CompletePicBack.flr',
+    animation: 'Start',
+    fit: BoxFit.cover,
+  );
+
+  Widget findPairStart  = FlareActor(
+    'assets/attentiongame/findpair/findPairBack.flr',
+    animation: 'Start',
+    fit: BoxFit.cover,
+  );
 }

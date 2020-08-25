@@ -42,7 +42,6 @@ class _PicOneState extends State<PicOne> {
                     color: Colors.black,
                     width: 3,
                   ),
-                  borderRadius: BorderRadius.circular(12),
                 ),
                 child: Stack(
                   children: <Widget>[

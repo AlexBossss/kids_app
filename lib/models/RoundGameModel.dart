@@ -95,7 +95,7 @@ class RoundGameModelState extends State<RoundGameModel> {
               height: MediaQuery.of(context).size.height,
               child: isGameFished
                   ? FlareActor(
-                'assets/extraitem/BalloonsAnimation.flr',
+                'assets/BalloonsAnimation.flr',
                 animation: 'goUP',
               )
                   : Container()),

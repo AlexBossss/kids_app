@@ -58,11 +58,13 @@ flutter:
     - assets/memorygame/wheredoilive/
     - assets/memorygame/sounds/
     - assets/whatsuitsicons/
-    - assets/extraitem/shapedpics/square/
-    - assets/extraitem/shapedpics/circle/
-    - assets/extraitem/shapedpics/triangle/
-    - assets/extraitem/
+    - assets/logic/extraitem/shapedpics/square/
+    - assets/logic/extraitem/shapedpics/circle/
+    - assets/logic/extraitem/shapedpics/triangle/
+    - assets/logic/extraitem/
+    - assets/logic/completepic/
     - assets/
+    - assets/attentiongame/findpair/
     - assets/logic/paintpicitems/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
