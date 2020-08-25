@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kidsapp/games/logic/paintpicgame/easel.dart';
+import 'package:kidsapp/games/logic/paintpicgame/Easel.dart';
 import 'package:kidsapp/models/RoundGameModel.dart';
 import 'package:kidsapp/models/Data/FlareData.dart';
 

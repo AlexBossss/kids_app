@@ -16,7 +16,7 @@ class _StarState extends State<Star> {
     return Container(
       width: 50,
       height: 50,
-      child: FlareActor('assets/extraitem/Star.flr',animation: 'Glow' ,),
+      child: FlareActor('assets/Star.flr',animation: 'Glow' ,),
     );
   }
 }

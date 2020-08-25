@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kidsapp/games/logic/completepicture/CompletePictureGame.dart';
 import 'package:kidsapp/games/logic/extraitem/ExtraItemGame.dart';
 import 'package:kidsapp/games/logic/paintpicgame/PaintPicGame.dart';
 import 'package:kidsapp/games/logic/rightway/PlaceRightObjectGame.dart';
@@ -11,6 +10,7 @@ import 'package:kidsapp/home/HomeScreen.dart';
 import 'package:provider/provider.dart';
 import 'games/attentiongames/findpair/FindPairGame.dart';
 import 'games/attentiongames/whatsuits/WhatSuitsGame.dart';
+import 'games/logic/completepicture/ComletePicture.dart';
 import 'games/memory/rememberorder/RememberOrder.dart';
 import 'games/memorycardgame/MemoryCardGameMenu.dart';
 import 'package:kidsapp/src/theme/theme.dart';
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
             '/whereIAmGame': (BuildContext context) => WhereIAmGame(),
             '/findPairGame': (BuildContext context) => FindPairGame(),
             '/completePictureGame': (BuildContext context) =>
-                CompletePictureGame(),
+                CompletePicture(),
             '/extraItemGame': (BuildContext context) => ExtraItemGame(),
             '/whatSuits': (BuildContext context) => WhatSuitsGame(),
             '/paintPicGame': (BuildContext context) => PaintPicGame(),

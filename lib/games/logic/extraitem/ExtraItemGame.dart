@@ -59,7 +59,7 @@ class ExtraItemGameState extends State<ExtraItemGame> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: SvgPicture.asset(
-                'assets/extraitem/fridge_back.svg',
+                'assets/logic/extraitem/fridge_back.svg',
                 fit: BoxFit.cover,
               ),
             ),
@@ -72,7 +72,7 @@ class ExtraItemGameState extends State<ExtraItemGame> {
                       child: Container(
                         width: MediaQuery.of(context).size.width / 1.15,
                         height: MediaQuery.of(context).size.height / 1.9,
-                        child: SvgPicture.asset('assets/extraitem/cloud.svg',
+                        child: SvgPicture.asset('assets/logic/extraitem/cloud.svg',
                             fit: BoxFit.fill),
                       ),
                     )

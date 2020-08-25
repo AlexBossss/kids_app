@@ -192,7 +192,6 @@ class _RememberOrderRoundState extends State<RememberOrderRound> {
                     if (_score.length == _data.length) {
                       Provider.of<ProgressBarStarData>(context, listen: false).finishRound();
                       RememberOrderState().nextRound();
-
                     }
                   }),
             )),
