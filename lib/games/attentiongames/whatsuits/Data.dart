@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-List <String> whatSuitsCurvedFigures = [
+List<String> whatSuitsCurvedFigures = [
   'assets/whatsuitsicons/CurvedFigure1.svg',
   'assets/whatsuitsicons/CurvedFigure2.svg',
   'assets/whatsuitsicons/CurvedFigure3.svg',
@@ -10,7 +10,7 @@ List <String> whatSuitsCurvedFigures = [
   'assets/whatsuitsicons/CurvedFigure5.svg',
   'assets/whatsuitsicons/CurvedFigure6.svg',
 ];
-List <String> whatSuitsStars =[
+List<String> whatSuitsStars = [
   'assets/whatsuitsicons/Star1.svg',
   'assets/whatsuitsicons/Star2.svg',
   'assets/whatsuitsicons/Star3.svg',
@@ -19,7 +19,7 @@ List <String> whatSuitsStars =[
   'assets/whatsuitsicons/Star6.svg',
 ];
 
-List <String> whatSuitsKeys =[
+List<String> whatSuitsKeys = [
   'assets/whatsuitsicons/Key1.svg',
   'assets/whatsuitsicons/Key2.svg',
   'assets/whatsuitsicons/Key3.svg',
@@ -28,7 +28,7 @@ List <String> whatSuitsKeys =[
   'assets/whatsuitsicons/Key6.svg',
 ];
 
-List <String> whatSuitsCurvedStars =[
+List<String> whatSuitsCurvedStars = [
   'assets/whatsuitsicons/CurvedStar1.svg',
   'assets/whatsuitsicons/CurvedStar2.svg',
   'assets/whatsuitsicons/CurvedStar3.svg',
@@ -37,7 +37,7 @@ List <String> whatSuitsCurvedStars =[
   'assets/whatsuitsicons/CurvedStar6.svg',
 ];
 
-List <String> whatSuitsPuzzles =[
+List<String> whatSuitsPuzzles = [
   'assets/whatsuitsicons/Puzzle1.svg',
   'assets/whatsuitsicons/Puzzle2.svg',
   'assets/whatsuitsicons/Puzzle3.svg',
@@ -46,38 +46,39 @@ List <String> whatSuitsPuzzles =[
   'assets/whatsuitsicons/Puzzle6.svg',
 ];
 
-List <String> getCurvedData(){
+List<String> getCurvedData() {
   whatSuitsCurvedFigures.shuffle();
-  return whatSuitsCurvedFigures.sublist(0,4);
+  return whatSuitsCurvedFigures.sublist(0, 3);
 }
-List <String> getStarsData(){
+
+List<String> getStarsData() {
   whatSuitsStars.shuffle();
-  return whatSuitsStars.sublist(0,4);
+  return whatSuitsStars.sublist(0, 3);
 }
-List <String> getCurvedStarsData(){
+
+List<String> getCurvedStarsData() {
   whatSuitsCurvedStars.shuffle();
-  return whatSuitsCurvedStars.sublist(0,4);
+  return whatSuitsCurvedStars.sublist(0, 3);
 }
 
-List <String> getPuzzlesData(){
+List<String> getPuzzlesData() {
   whatSuitsPuzzles.shuffle();
-  return whatSuitsPuzzles.sublist(0,4);
+  return whatSuitsPuzzles.sublist(0, 3);
 }
 
-List <String> getKeysData(){
+List<String> getKeysData() {
   whatSuitsKeys.shuffle();
-  return whatSuitsKeys.sublist(0,4);
+  return whatSuitsKeys.sublist(0, 3);
 }
 
-List <bool> elementState = [
+List<bool> elementState = [
   false,
   false,
   false,
-  false
 ];
 
-List <Color> colors = [
-  Colors.lightBlue,
+List<Color> colors = [
+  Colors.amberAccent,
+  Colors.lightGreen,
   Colors.deepPurpleAccent,
-  Colors.redAccent
 ];

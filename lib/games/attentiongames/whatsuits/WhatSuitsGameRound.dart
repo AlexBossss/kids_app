@@ -3,6 +3,10 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kidsapp/games/attentiongames/whatsuits/FinishedItem.dart';
+import 'package:kidsapp/games/attentiongames/whatsuits/WhatSuitsItem.dart';
+import 'package:kidsapp/models/lightbulbprogress/ProgressBarStar.dart';
+import 'package:provider/provider.dart';
 
 import 'Data.dart';
 import 'WhatSuitsGame.dart';
@@ -12,13 +16,12 @@ class WhatSuitsRound extends StatefulWidget {
   _WhatSuitsRoundState createState() => _WhatSuitsRoundState();
 }
 
-
 class _WhatSuitsRoundState extends State<WhatSuitsRound> {
   List<String> _data;
   String _searchItem;
   bool _isDone;
-  List<bool> elementState = [false, false, false, false];
-  List <List<String>> _figures =[
+  List<bool> elementState = [false, false, false];
+  List<List<String>> _figures = [
     getStarsData(),
     getCurvedData(),
     getCurvedStarsData(),
@@ -26,6 +29,7 @@ class _WhatSuitsRoundState extends State<WhatSuitsRound> {
     getPuzzlesData()
   ];
   Color _itemColor;
+  double _topPaddingPercent;
 
   @override
   void initState() {
@@ -33,73 +37,94 @@ class _WhatSuitsRoundState extends State<WhatSuitsRound> {
     _isDone = false;
     _data = _figures[Random().nextInt(_figures.length)];
     _searchItem = _data[Random().nextInt(_data.length)];
+    _topPaddingPercent = 0.23;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          width: 200,
-          height: 200,
-          color: _itemColor,
-          child: Padding(
-            padding: const EdgeInsets.all(40.0),
-            child: DragTarget<String>(
-                onWillAccept: (data) => data == _searchItem,
-                onAccept: (e) {
-                  setState(() {
-                    _isDone = true;
-                    elementState[_data.indexOf(e)] = true;
-                  });
-                  WhatSuitsGameState().nextRound();
-                },
-                builder: (BuildContext context, List incoming, List rejected) {
-                  return _isDone
-                      ? Container()
-                      : Container(
-                          child: SvgPicture.asset(
-                            _searchItem,
-                            color: Colors.white,
+    double screenHeight = MediaQuery.of(context).size.height;
+    return Container(
+      height: screenHeight,
+      child: Column(
+        children: <Widget>[
+          SizedBox(
+            height: screenHeight * _topPaddingPercent,
+          ),
+          Container(
+            width: 400,
+            child: Wrap(
+              children: _data
+                  .map((e) => Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Draggable<String>(
+                          data: e,
+                          childWhenDragging: Container(
+                            width: 100,
+                            height: 100,
                           ),
-                        );
-                }),
+                          feedback: Container(
+                            height: 100,
+                            width: 100,
+                            child: SvgPicture.asset(e, color: _itemColor),
+                          ),
+                          child: elementState[_data.indexOf(e)]
+                              ? Container(
+                                  height: 100,
+                                  width: 100,
+                                )
+                              : WhatSuitsItem(e, _itemColor),
+                        ),
+                      ))
+                  .toList(),
+            ),
           ),
-        ),
-        Center(
-          child: Wrap(
-            children: _data
-                .map((e) => Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Draggable<String>(
-                        data: e,
-                        childWhenDragging: Container(
-                          width: 120,
-                          height: 120,
-                        ),
-                        feedback: Container(
-                          height: 120,
-                          width: 120,
-                          child: SvgPicture.asset(e, color: _itemColor),
-                        ),
-                        child: elementState[_data.indexOf(e)]
-
+          SizedBox(
+            height: 40,
+          ),
+          Container(
+            width: 180,
+            height: 180,
+            child: Stack(children: [
+              Container(
+                width: 180,
+                height: 180,
+                child: SvgPicture.asset(
+                  'assets/attentiongame/whatsuits/TV.svg',
+                  fit: BoxFit.fill,
+                ),
+              ),
+              Padding(
+                  padding: const EdgeInsets.fromLTRB(40, 20, 40, 40),
+                  child: DragTarget<String>(
+                      onWillAccept: (data) => data == _searchItem,
+                      onAccept: (e) {
+                        setState(() {
+                          _isDone = true;
+                          elementState[_data.indexOf(e)] = true;
+                        });
+                        WhatSuitsGameState().nextRound();
+                        Provider.of<ProgressBarStarData>(context, listen: false)
+                            .finishRound();
+                      },
+                      builder:
+                          (BuildContext context, List incoming, List rejected) {
+                        return _isDone
                             ? Container(
-                                height: 120,
-                                width: 120,
-                              )
+                                child: FinishedItem(_searchItem, _itemColor))
                             : Container(
-                                height: 120,
-                                width: 120,
-                                child: SvgPicture.asset(e, color: _itemColor),
-                              ),
-                      ),
-                    ))
-                .toList(),
+                                child: SvgPicture.asset(
+                                  _searchItem,
+                                  width: 100,
+                                  height: 100,
+                                  color: Colors.white,
+                                ),
+                              );
+                      })),
+            ]),
           ),
-        )
-      ],
+        ],
+      ),
     );
   }
 }
